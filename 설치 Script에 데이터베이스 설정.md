@@ -108,3 +108,11 @@ nsExec::Exec 'netsh advfirewall firewall add rule name="thePLUS_Piping_UDP" dir=
 ### 💡 "the PLUS Piping" 최적화 팁
 1. 캐싱(Caching): 매번 찾으면 느려질 수 있으니, 한 번 찾은 IP는 settings.db나 ini 파일에 저장해 두세요. 접속에 실패할 때만 다시 UDP 탐색을 돌리는 것이 효율적입니다.
 2. 멀티 서버 방지: 혹시 한 사무실에 서버를 두 대 설치하는 실수를 범할 수 있습니다. 이 경우 클라이언트가 리스트를 보여주고 "어느 서버에 접속할까요?"라고 묻는 UI를 추가하면 완벽합니다.
+
+## 🚀 프로그램 실행 시 DB 자동 선택 로직
+1. **레지스트리 체크**: `HKLM\Software\K1 Plant Solutions\the PLUS Piping\InstallType` 값 확인.
+2. **연결 분기**:
+   - `1`: `sqlite3.connect()` 실행.
+   - `2`: `psycopg2.connect(host='localhost')` 실행.
+   - `3`: `UDP Beacon`으로 서버 IP 획득 후 `psycopg2.connect(host=IP)` 실행.
+3. **공통 인터페이스**: 프로그램 내의 모든 쿼리는 `cursor`를 사용하되, 작업 후 반드시 `close()`하여 연결 유지 및 리소스 관리 철저.
