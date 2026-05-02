@@ -25,20 +25,6 @@
       "target_dir": "ColorTheme",
       "publish_mode": "git_branch"
     },
-    "ColorTheme/modern_style.qss.bak": {
-      "url": "https://raw.githubusercontent.com/skw4567/AppUpdates/updates/release_update/ColorTheme/modern_style.qss.bak",
-      "hash": "2de868a57c4fa9f9d410364531979abff876caa78799d0609509f9f6eac9cc03",
-      "size": 123737,
-      "target_dir": "ColorTheme",
-      "publish_mode": "git_branch"
-    },
-    "ColorTheme/modern_style.qss.pre_newline_cleanup.bak": {
-      "url": "https://raw.githubusercontent.com/skw4567/AppUpdates/updates/release_update/ColorTheme/modern_style.qss.pre_newline_cleanup.bak",
-      "hash": "177c393606ed10a44df67a06c16b2f1fc8adac0503a6b5349ac69e01b3c183e8",
-      "size": 118565,
-      "target_dir": "ColorTheme",
-      "publish_mode": "git_branch"
-    },
     "THEPLUSPIPING.exe": {
       "url": "https://github.com/skw4567/AppUpdates/releases/download/v2026.05.02.1825/THEPLUSPIPING.exe",
       "hash": "c693bf23b20398ba9d6c4d33ee212cbacc679a3a464ab2c1b236a72a83134e2a",
