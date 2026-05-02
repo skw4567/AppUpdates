@@ -1,0 +1,80 @@
+# Light Theme Color Scheme
+# 10가지 색 계열 × 3단계 시스템
+
+# Primary Colors (UI 기본 색상)
+primary-100:#FF6347;
+primary-200:#dc442e;
+primary-300:#8d0000;
+
+# Accent Colors (강조 색상)
+accent-100:#7FFF00;
+accent-200:#6b7c66;
+
+# Text Colors (텍스트 색상)
+text-100:#333333;
+text-200:#5c5c5c;
+text-300:#3887FD;
+
+# Background Colors (배경 색상)
+bg-100:#F7F7F7;
+bg-200:#ededed;
+bg-300:#6B7C66;
+
+# SVG Icon Colors (아이콘 색상)
+svg-icon-100:#333333;
+svg-icon-200:#5c5c5c;
+
+# Red Colors (빨강 - 경고/에러)
+red-light:#E63946;
+red-medium:#DC143C;
+red-dark:#991B1B;
+
+# Border Colors (테두리 색상)
+border-100:#d0d0d0;
+border-200:#a0a0a0;
+border-300:#707070;
+
+# Orange Colors (주황 - 주의)
+orange-light:#E8843A;
+orange-medium:#D97706;
+orange-dark:#92400E;
+
+# Yellow Colors (노랑 - 진행)
+yellow-light:#CA8A04;
+yellow-medium:#B8860B;
+yellow-dark:#78350F;
+
+# Green Colors (녹색 - 완료/성공)
+green-light:#4B9D6F;
+green-medium:#16A34A;
+green-dark:#15803D;
+
+# Cyan Colors (청록 - 정보)
+cyan-light:#4B8E9F;
+cyan-medium:#0891B2;
+cyan-dark:#155E75;
+
+# Blue Colors (파랑 - 대기/정보)
+blue-light:#4F7BA7;
+blue-medium:#2563EB;
+blue-dark:#1E40AF;
+
+# Purple Colors (보라 - 검토)
+purple-light:#8B5CF6;
+purple-medium:#7C3AED;
+purple-dark:#5B21B6;
+
+# Magenta Colors (마젠타 - 특수)
+magenta-light:#D946A6;
+magenta-medium:#C2185B;
+magenta-dark:#880E4F;
+
+# Brown Colors (갈색 - 보류)
+brown-light:#A16207;
+brown-medium:#92400E;
+brown-dark:#5A2E0A;
+
+# Gray Colors (회색 - 비활성)
+gray-light:#9CA3AF;
+gray-medium:#6B7280;
+gray-dark:#374151;
