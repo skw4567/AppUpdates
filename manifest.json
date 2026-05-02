@@ -1,32 +1,32 @@
 {
-  "version": "2026.05.02.2028",
-  "tag": "v2026.05.02.2028",
-  "generated_at": "2026-05-02T11:28:36Z",
+  "version": "2026.05.02.2044",
+  "tag": "v2026.05.02.2044",
+  "generated_at": "2026-05-02T11:45:01Z",
   "source": "C:/Development/Publisher/AppUpdates/release_update",
   "files": {
     "ColorTheme/Dark.clr": {
       "url": "https://raw.githubusercontent.com/skw4567/AppUpdates/updates/release_update/ColorTheme/Dark.clr",
-      "hash": "e299ef2367a2107ddd24a8af41a70e3bdcaba643b91a5378e61c78479aca9562",
-      "size": 1712,
+      "hash": "a760a6d1fe7d591f3d2c7d9824fc7f3a5cc651cf59364c3a863165e07f25ba2c",
+      "size": 1628,
       "target_dir": "ColorTheme",
       "publish_mode": "git_branch"
     },
     "ColorTheme/Light.clr": {
       "url": "https://raw.githubusercontent.com/skw4567/AppUpdates/updates/release_update/ColorTheme/Light.clr",
-      "hash": "a215a734298b32fba48c0f0dc2c493c2139e9de0dfb31b7c4fe1bb64a4366574",
-      "size": 1671,
+      "hash": "75bfe1a7393c7f84ef14dd83ab70fd1d51b963ee1b50c9b9d544c789fe27f4cd",
+      "size": 1591,
       "target_dir": "ColorTheme",
       "publish_mode": "git_branch"
     },
     "ColorTheme/modern_style.qss": {
       "url": "https://raw.githubusercontent.com/skw4567/AppUpdates/updates/release_update/ColorTheme/modern_style.qss",
-      "hash": "0a54815b3921eb560d8e3f9868ededfcf9615cd57af4618a0f2034f5bdc8359f",
-      "size": 126538,
+      "hash": "213ca6dbd4b9befeb36eefc4520f652ef413aead64e1280c7139b881cd7d0e4f",
+      "size": 120946,
       "target_dir": "ColorTheme",
       "publish_mode": "git_branch"
     },
     "THEPLUSPIPING.exe": {
-      "url": "https://github.com/skw4567/AppUpdates/releases/download/v2026.05.02.2028/THEPLUSPIPING.exe",
+      "url": "https://github.com/skw4567/AppUpdates/releases/download/v2026.05.02.2044/THEPLUSPIPING.exe",
       "hash": "c693bf23b20398ba9d6c4d33ee212cbacc679a3a464ab2c1b236a72a83134e2a",
       "size": 210962432,
       "target_dir": "",
@@ -34,8 +34,8 @@
     },
     "updater_style.qss": {
       "url": "https://raw.githubusercontent.com/skw4567/AppUpdates/updates/release_update/updater_style.qss",
-      "hash": "c31b05e02cfc63cde8525670dd132c60ca5f579f479d9267589fa6cb10b65643",
-      "size": 727,
+      "hash": "9abfdc62da811f63bb24fa0d3b68a3c1f7623330a13cae1c10128248b65c9d58",
+      "size": 688,
       "target_dir": "",
       "publish_mode": "git_branch"
     }
