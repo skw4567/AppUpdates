@@ -1,32 +1,32 @@
 {
-  "version": "2026.05.05.0833",
-  "tag": "v2026.05.05.0833",
-  "generated_at": "2026-05-04T23:34:02Z",
+  "version": "2026.05.05.0853",
+  "tag": "v2026.05.05.0853",
+  "generated_at": "2026-05-04T23:53:28Z",
   "source": "C:/Development/Publisher/AppUpdates/release_update",
   "files": {
     "ColorTheme/Dark.clr": {
       "url": "https://raw.githubusercontent.com/skw4567/AppUpdates/updates/release_update/ColorTheme/Dark.clr",
       "hash": "a760a6d1fe7d591f3d2c7d9824fc7f3a5cc651cf59364c3a863165e07f25ba2c",
       "size": 1628,
-      "target_dir": "ColorTheme",
+      "target_dir": "appdata:ColorTheme",
       "publish_mode": "git_branch"
     },
     "ColorTheme/Light.clr": {
       "url": "https://raw.githubusercontent.com/skw4567/AppUpdates/updates/release_update/ColorTheme/Light.clr",
       "hash": "75bfe1a7393c7f84ef14dd83ab70fd1d51b963ee1b50c9b9d544c789fe27f4cd",
       "size": 1591,
-      "target_dir": "ColorTheme",
+      "target_dir": "appdata:ColorTheme",
       "publish_mode": "git_branch"
     },
     "ColorTheme/modern_style.qss": {
       "url": "https://raw.githubusercontent.com/skw4567/AppUpdates/updates/release_update/ColorTheme/modern_style.qss",
       "hash": "213ca6dbd4b9befeb36eefc4520f652ef413aead64e1280c7139b881cd7d0e4f",
       "size": 120946,
-      "target_dir": "ColorTheme",
+      "target_dir": "appdata:ColorTheme",
       "publish_mode": "git_branch"
     },
     "THEPLUSPIPING.exe": {
-      "url": "https://github.com/skw4567/AppUpdates/releases/download/v2026.05.05.0833/THEPLUSPIPING.exe",
+      "url": "https://github.com/skw4567/AppUpdates/releases/download/v2026.05.05.0853/THEPLUSPIPING.exe",
       "hash": "409de2042d94d2d5f461840c2f3865d7b7f6a7dc64b87f74341ef9f12e1a58d6",
       "size": 243174912,
       "target_dir": "",
