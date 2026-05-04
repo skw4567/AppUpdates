@@ -1,7 +1,7 @@
 {
-  "version": "2026.05.03.2023",
-  "tag": "v2026.05.03.2023",
-  "generated_at": "2026-05-03T11:23:37Z",
+  "version": "2026.05.04.0948",
+  "tag": "v2026.05.04.0948",
+  "generated_at": "2026-05-04T00:48:24Z",
   "source": "C:/Development/Publisher/AppUpdates/release_update",
   "files": {
     "ColorTheme/Dark.clr": {
@@ -26,9 +26,9 @@
       "publish_mode": "git_branch"
     },
     "THEPLUSPIPING.exe": {
-      "url": "https://github.com/skw4567/AppUpdates/releases/download/v2026.05.03.2023/THEPLUSPIPING.exe",
-      "hash": "6862368d56f869afa03c63b7d85e1234144007fa70ad11bbe5b38babc4746f61",
-      "size": 211525120,
+      "url": "https://github.com/skw4567/AppUpdates/releases/download/v2026.05.04.0948/THEPLUSPIPING.exe",
+      "hash": "a3246a86b9e30a0d2bfc1320e023960ef575f8bfc22b8830919af8d011e764e2",
+      "size": 211770368,
       "target_dir": "",
       "publish_mode": "release_asset"
     },
