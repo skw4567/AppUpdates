@@ -10,138 +10,87 @@ QMainWindow {
     font-weight: normal;
 }
 
-ProjectExplorer {
-    background-color: {{bg-200}};
-    border-radius: 0px;
-    border-right: 1px solid {{border-100}};
-    color: {{text-100}};
-    font-weight: normal;
-}
-
-/* 수직 스크롤바 본체 */
-QScrollBar:vertical {
+/* 1. 수직 & 수평 스크롤바 본체 공통 설정 */
+QScrollBar:vertical, QScrollBar:horizontal,
+QScrollArea QScrollBar:vertical, QScrollArea QScrollBar:horizontal,
+QAbstractScrollArea QScrollBar:vertical, QAbstractScrollArea QScrollBar:horizontal,
+QGraphicsView QScrollBar:vertical, QGraphicsView QScrollBar:horizontal {
     border: none;
-    background: rgba(148, 163, 184, 0.1);
-    width: 8px;
+    background: {{bg-300}};
     margin: 0px;
     border-radius: 4px;
 }
 
-/* 스크롤바 핸들 (움직이는 부분) */
-QScrollBar::handle:vertical {
-    background: rgba(148, 163, 184, 0.4);
-    min-height: 20px;
+QScrollBar:vertical, QScrollArea QScrollBar:vertical, QAbstractScrollArea QScrollBar:vertical, QGraphicsView QScrollBar:vertical { width: 8px; }
+QScrollBar:horizontal, QScrollArea QScrollBar:horizontal, QAbstractScrollArea QScrollBar:horizontal, QGraphicsView QScrollBar:horizontal { height: 8px; }
+
+/* 2. 스크롤바 핸들 (움직이는 부분) */
+QScrollBar::handle:vertical, QScrollBar::handle:horizontal,
+QScrollArea QScrollBar::handle:vertical, QScrollArea QScrollBar::handle:horizontal,
+QAbstractScrollArea QScrollBar::handle:vertical, QAbstractScrollArea QScrollBar::handle:horizontal,
+QGraphicsView QScrollBar::handle:vertical, QGraphicsView QScrollBar::handle:horizontal {
+    background: {{primary-100}};
     border-radius: 4px;
     margin: 2px;
 }
 
-/* 핸들 호버 효과 */
-QScrollBar::handle:vertical:hover {
-    background: rgba(148, 163, 184, 0.6);
+QScrollBar::handle:vertical, QScrollArea QScrollBar::handle:vertical, QAbstractScrollArea QScrollBar::handle:vertical, QGraphicsView QScrollBar::handle:vertical { min-height: 20px; }
+QScrollBar::handle:horizontal, QScrollArea QScrollBar::handle:horizontal, QAbstractScrollArea QScrollBar::handle:horizontal, QGraphicsView QScrollBar::handle:horizontal { min-width: 20px; }
+
+/* 3. 핸들 호버 효과 */
+QScrollBar::handle:vertical:hover, QScrollBar::handle:horizontal:hover,
+QScrollArea QScrollBar::handle:vertical:hover, QScrollArea QScrollBar::handle:horizontal:hover,
+QAbstractScrollArea QScrollBar::handle:vertical:hover, QAbstractScrollArea QScrollBar::handle:horizontal:hover,
+QGraphicsView QScrollBar::handle:vertical:hover, QGraphicsView QScrollBar::handle:horizontal:hover {
+    background: {{primary-200}};
 }
 
-/* 상하단 화살표 버튼 제거 */
-QScrollBar::add-line:vertical, 
-QScrollBar::sub-line:vertical {
+
+/* 4. 화살표 버튼 제거 */
+QScrollBar::add-line, QScrollBar::sub-line,
+QScrollArea QScrollBar::add-line, QScrollArea QScrollBar::sub-line,
+QAbstractScrollArea QScrollBar::add-line, QAbstractScrollArea QScrollBar::sub-line,
+QGraphicsView QScrollBar::add-line, QGraphicsView QScrollBar::sub-line {
+    border: none;
+    background: none;
+    width: 0px;
     height: 0px;
 }
 
-/* 핸들 위아래 빈 공간(페이지 이동 영역) */
-QScrollBar::add-page:vertical, 
-QScrollBar::sub-page:vertical {
+/* 5. 배경 (페이지 이동 영역) */
+QScrollBar::add-page, QScrollBar::sub-page,
+QScrollArea QScrollBar::add-page, QScrollArea QScrollBar::sub-page,
+QAbstractScrollArea QScrollBar::add-page, QAbstractScrollArea QScrollBar::sub-page,
+QGraphicsView QScrollBar::add-page, QGraphicsView QScrollBar::sub-page {
     background: transparent;
 }
 
-
-#popup_container {
-    background-color: rgba(7, 26, 26, 0.6);
-    border: 2px solid {{border-400}};
-    border-radius: 16px;
-}
-
-/* ============ Weather Detail Popup ============ */
-.DetailCalIcon { color: #4dd0e1; font-family: "{{font-icon}}" !important; font-size: 14px; }
-.DetailDate { color: #a0a0a0; font-size: 13px; font-weight: bold; letter-spacing: 1px; }
-
-.DetailMainIcon { color: #4dd0e1; font-family: "{{font-icon}}" !important; font-size: 64px; }
-.DetailMainTemp { color: #ffffff; font-size: 48px; font-weight: bold; }
-.DetailDesc { color: #4dd0e1; font-size: 16px; font-weight: bold; margin-left: 85px; }
-
-.DetailLocIcon { color: #a0a0a0; font-family: "{{font-icon}}" !important; font-size: 14px; }
-.DetailLoc { color: #a0a0a0; font-size: 13px; }
-
-.SiteBadge {
-    background-color: rgba(77, 208, 225, 0.2);
-    color: #4dd0e1;
-    border-radius: 4px;
-    padding: 2px 6px;
-    font-size: 11px;
-    font-weight: bold;
-}
-
-.StatTitle { color: #6e6e6e; font-size: 10px; font-weight: bold; }
-.StatValue { color: #ffffff; font-size: 15px; font-weight: bold; }
-
-.DetailDivider { background-color: rgba(255,255,255,0.05); max-height: 1px; }
-.DetailHeader { color: #ffffff; font-size: 15px; font-weight: bold; letter-spacing: 1px; }
-
-.NavArrow {
-    background-color: #0d2a2a;
-    color: #4dd0e1;
-    border: none;
-    border-radius: 8px;
-    font-family: "{{font-icon}}" !important;
-    font-size: 16px;
-}
-.NavArrow:hover {
-    background-color: {{text-300}};
-    color: {{primary-100}};
-    border-color: {{primary-100}};
-}
-
-#pill_dot { background-color: #4dd0e1; border-radius: 2px; }
-.WeatherPillsContainer { background-color: transparent; }
-/* ============ Weather Detail Popup End ============ */
-
-#workspace {
-    background-color: {{bg-300}};
-    color: {{text-100}};
-    font-weight: normal;
-    border-radius: 0px;
-}
-
-#container {
-    background-color: {{bg-100}};
-    color: {{text-100}};
-    border-radius: 8px;
-}
-
-#MainContentWidget {
-    background-color: {{bg-100}};
-}
-
-QSplitter#MainContentSplitter {
+QSplitter {
     background-color: {{bg-100}};
     border: none;
 }
 
-QSplitter#MainContentSplitter::handle {
+QSplitter::handle {
     background-color: {{bg-100}};
     border: none;
 }
 
-QSplitter#MainContentSplitter::handle:horizontal:hover,
-QSplitter#MainContentSplitter::handle:horizontal:pressed {
+QSplitter::handle:horizontal:hover,
+QSplitter::handle:horizontal:pressed {
     background-color: {{primary-100}};
 }
 
-QFrame#explorer_wrapper {
-    background-color: {{bg-300}};
-    border-radius: 0px;
-    color: {{text-100}};
-    padding: 0px; 
-    border-top: none;
-    font-weight: normal;
+.FieldLabel {
+    background: transparent;
+    color: {{text-200}};
+    font-size: 9pt;
+    font-weight: 600;
+    padding-right: 2px;
+}
+
+.PlusTitleBar {
+    background-color: {{bg-200}};
+    border-bottom: 1px solid {{border-100}};
 }
 
 QStatusBar {
@@ -153,57 +102,516 @@ QStatusBar {
     font-weight: normal;
 }
 
+QStatusBar[statusState="error"] {
+    color: #ff5252;
+}
+
+QStatusBar[statusState="success"] {
+    color: #4caf50;
+}
+
 QLabel { 
     background-color: transparent; 
     color: {{text-100}}; 
 }
 
-/* ============ PropertyEditDialog ============ */
-QDialog#PropertyEditDialog, QDialog[class="PropertyEditDialog"] {
+/* ============ Public Transparent Dialor Styles ============ */
+.TransparentShadowDialog {
     background-color: transparent;
 }
 
-QFrame#PropertyEditDialogBackdrop, QFrame[class="PropertyEditDialogBackdrop"] {
+
+/* ============ Public Widget Styles ============ */
+.DockPanel {
+    background-color: {{bg-100}} !important;
+    border-left: 1px solid {{border-100}} !important;
+    border-right: 1px solid {{border-100}} !important;
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+.PageWidgetContainer {
+    background-color: {{bg-300}};
+    border: none;
+    border-radius: 0px;
+}
+
+.PageWidgetContainer[border="right"] {
+    border: none;
+    border-right: 1px solid {{border-100}};
+}
+
+.PageWidgetContainer[border="left"] {
+    border: none;
+    border-left: 1px solid {{border-100}};
+}
+
+.PageWidgetContainer[border="right_left"] {
+    border: none;
+    border-right: 1px solid {{border-100}};
+    border-left: 1px solid {{border-100}};
+}
+
+.PageWidgetHeader {
+    background-color: {{bg-200}};
+    border-bottom: 1px solid {{border-100}};
+}
+
+.PageWidgetFooter {
+    background-color: {{bg-200}};
+    border-top: 1px solid {{border-100}};
+}
+
+.SearchInput {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 10pt;
+    padding: 0px;
+}
+
+.PageWidgetScrollArea {
+    background: transparent;
+    border: none;
+}
+
+.PageWidgetScrollContent {
+    background-color: {{bg-100}};
+    border: none;
+}
+
+
+.GalleryItem {
+    background-color: transparent;
+    border: 0px;
+    border-radius: 0px;
+}
+
+.GalleryItem[hover="true"] {
+    border: 1px solid {{primary-100}};
+}
+
+.GalleryItem[selected="true"] {
+    border: 2px solid {{primary-100}};
+}
+
+QLabel#OverlayLabel {
+    background-color: rgba(0, 0, 0, 180);
+    color: {{text-200}};
+    font-size: 8pt;
+    padding: 0px;
+}
+
+
+/* ============ Dialog Styles ============ */
+.OpacityPopupContainer {
+    background-color: {{bg-300_op60}};
+    border: 2px solid {{border-100}};
+    border-radius: 16px;
+}
+
+/* ============ Public Button Styles ============ */
+
+.ButtonPrimary {
+    background-color: {{primary-100}}; 
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    padding: 6px 12px; 
+    font-weight: bold; 
+    font-size: 9pt;
+}
+.ButtonPrimary:hover {
+    background-color: {{primary-200}};
+}
+.ButtonPrimary:pressed {
+    background-color: {{primary-200_op20}};
+}
+
+.ButtonSecondary {
+    background-color: {{bg-300_op20}}; 
+    color: {{text-200}}; 
+    border: none; 
+    border-radius: 4px; 
+    padding: 6px 12px; 
+    font-weight: bold; 
+    font-size: 9pt;
+}
+.ButtonSecondary:hover {
+    background-color: {{bg-200_op40}};
+}
+.ButtonSecondary:pressed {
+    padding: 0 16px;
+    margin: 0;
+}
+
+.ButtonDanger {
+    background-color: #F43F5E; 
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    padding: 6px 12px; 
+    font-weight: bold; 
+    font-size: 9pt;
+}
+.ButtonDanger:hover {
+    background-color: #f43f5e;
+}
+
+.WelderListFormInput[mode="view"] {
+    background-color: transparent;
+    border: none;
+    color: {{text-100}};
+}
+
+.WelderListFormInput[mode="edit"] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid {{primary-100}};
+    color: {{text-100}};
+}
+
+QProgressBar[status="success"]::chunk {
+    background-color: #1FA55B;
+}
+
+.DialogBtnPrimary {
+    background-color: {{primary-100}};
+    color: white;
+    border: none;
+    border-radius: 0px;
+    font-weight: bold;
+    font-size: 10pt;
+    min-height: 36px;
+    padding: 0 16px;
+}
+
+.DialogBtnPrimary:hover {
+    background-color: {{primary-200}};
+}
+
+.DialogBtnPrimary:pressed {
+    background-color: {{primary-200_op20}};
+    padding: 0 16px;
+    margin: 0;
+}
+
+.DialogBtnSecondary {
+    background-color: transparent;
+    color: {{text-100}};
+    border: 1px solid {{primary-100}};
+    border-radius: 0px;
+    font-weight: bold;
+    font-size: 10pt;
+    min-height: 36px;
+    padding: 0 16px;
+}
+
+.DialogBtnSecondary:hover {
+    background-color: {{bg-100}};
+}
+
+.DialogBtnSecondary:pressed {
+    padding: 0 16px;
+    margin: 0;
+}
+
+.DialogBtnDanger {
+    background-color: #F43F5E; 
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    padding: 6px 12px; 
+    font-weight: bold; 
+    font-size: 8pt;
+}
+.DialogBtnDanger:hover {
+    background-color: #f43f5e;
+}
+
+
+.DialogBtnClose {
+    background-color: {{bg-200}};
+    color: {{text-100}};
+    border: 1px solid {{border-100}};
+    border-radius: 0px;
+    font-size: 10pt;
+    padding: 0;
+    font-weight: bold;
+}
+
+.DialogBtnClose:hover {
+    background-color: #ef4444;
+    color: {{text-200}};
+    border: 1px solid #ef4444;
+}
+
+.DialogBtnClose:pressed {
+    color: {{text-200}};
+    padding: 2px 2px;
+    margin: 0;
+}
+/* ============ End Public Button Styles ============ */
+
+/* =============== 아이콘만 가진 버튼 정의 ===============*/
+
+.IconButton16 {
+    background-color: transparent;
+    color: {{svg-icon-100}};
+    border: none;
+    border-radius: 4px;
+    font-family: "{{font-icon}}" !important;
+    font-size: 16pt;
+    min-width: 32px;
+    min-height: 32px;
+}
+
+.IconButton16:hover {
+    background-color: {{bg-300}};
+    color: {{svg-icon-200}};
+}
+
+.IconButton16:checked {
+    /* 기존 hover보다 더 명확하게 구분되도록 약간 더 밝은 배경색과 하이라이트 컬러 지정 */
+    background-color: {{bg-300}}; 
+    color: {{svg-icon-300}}; /* 또는 원하시는 강조 테마 컬러 변수 주입 */
+}
+
+/* [신규 추가] 2. Checked 상태인 버튼 위에 마우스가 올라갔을 때의 피드백 스타일 */
+.IconButton16:checked:hover {
+    background-color: {{bg-300}};
+    color: {{svg-icon-300_op80}};
+}
+/* ============= 아이콘만 가진 버튼 정의 종료 ============*/
+
+
+/* ============ Icons ============ */
+.Icon {
+    font-family: "{{font-icon}}" !important;
+    font-size: 22pt;
+}
+
+.Icon[active="true"] { color: {{text-200}}; }
+.Icon[active="false"] { color: {{text-100}}; }
+
+.Icon_18 {
+    background: transparent;
+    font-family: "{{font-icon}}" !important;
+    font-size: 16pt;
+}
+.Icon_18[active="true"] { color: {{text-200}}; }
+.Icon_18[active="false"] { color: {{text-100}}; }
+
+.IconText {
+    background: transparent;
+    font-size: 9pt;
+}
+.IconText[active="true"] { color: {{text-200}}; }
+.IconText[active="false"] { color: {{text-100}}; }
+
+
+.Icon_primary {
+    font-family: "{{font-icon}}" !important;
+    font-size: 22pt;
+    color: {{primary-100}};
+}
+
+.Icon_primary[active="true"] { color: {{primary-100}}; }
+.Icon_primary[active="false"] { color: {{text-100}}; }
+
+.PanelIcon {
+    font-family: "{{font-icon}}" !important;
+    font-size: 14pt;
+    color: {{primary-100}};
+}
+
+.PanelIcon[active="true"] { color: {{primary-100}}; }
+.PanelIcon[active="false"] { color: {{text-100}}; }
+
+.PanelSubIcon {
+    font-family: "{{font-icon}}" !important;
+    font-size: 11pt;
+    color: {{text-200}};
+}
+
+.PanelSubIcon[active="true"] { color: {{primary-100}}; }
+.PanelSubIcon[active="false"] { color: {{text-200}}; }
+
+
+/* ============ End Icons Styles ============ */
+
+
+/* ============ Weather Detail Popup ============ */
+.DetailCalIcon { color: {{primary-200}}; font-family: "{{font-icon}}" !important; font-size: 12pt; }
+.DetailDate { color: {{text-100}}; font-size: 11pt; font-weight: bold; letter-spacing: 1px; }
+
+.DetailMainIcon { color: {{primary-200}}; font-family: "{{font-icon}}" !important; font-size: 62pt; }
+.DetailMainTemp { color: {{text-200}}; font-size: 46pt; font-weight: bold; }
+.DetailDesc { color: {{primary-200}}; font-size: 14pt; font-weight: bold; margin-left: 85px; }
+
+.DetailLocIcon { color: {{text-100}}; font-family: "{{font-icon}}" !important; font-size: 12pt; }
+.DetailLoc { color: {{text-100}}; font-size: 11pt; }
+
+.SiteBadge {
+    background-color: rgba(77, 208, 225, 0.2);
+    color: {{primary-200}};
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 9pt;
+    font-weight: bold;
+}
+
+.StatTitle { color: {{text-100}}; font-size: 8pt; font-weight: bold; }
+.StatValue { color: {{text-200}}; font-size: 13pt; font-weight: bold; }
+
+.DetailDivider { background-color: rgba(255,255,255,0.05); max-height: 1px; }
+.DetailHeader { color: {{text-200}}; font-size: 13pt; font-weight: bold; letter-spacing: 1px; }
+
+.NavArrow {
+    background-color: {{bg-300}};
+    color: {{primary-200}};
+    border: none;
+    border-radius: 8px;
+    font-family: "{{font-icon}}" !important;
+    font-size: 14pt;
+}
+.NavArrow:hover {
+    background-color: {{text-300}};
+    color: {{primary-100}};
+    border-color: {{primary-100}};
+}
+
+.WeatherPillsContainer { background-color: transparent; }
+/* ============ Weather Detail Popup End ============ */
+
+.WorkspaceTaans {
+    background-color: transparent;
+    color: {{text-100}};
+    font-weight: normal;
+    border-radius: 0px;
+}
+
+
+.Workspace {
+    background-color: {{bg-300}};
+    color: {{text-100}};
+    font-weight: normal;
+    border-radius: 0px;
+}
+
+.Container {
+    background-color: {{bg-100}};
+    color: {{text-100}};
+    border-radius: 8px;
+}
+
+.DialogBackdrop {
     background-color: rgba(0, 0, 0, 150);
 }
 
-QFrame#PropertyEditDialogContainer, QFrame[class="PropertyEditDialogContainer"] {
-    background-color: {{bg-200}};
+.DialogContainer {
+    background-color: {{bg-300}};
     border: 1px solid {{border-100}};
     border-radius: 12px;
 }
 
-QFrame#PropertyEditDialogContainer, QFrame[class="PropertyEditDialogContent"] {
-    background-color: {{bg-100}};
-}
-
-QFrame#PropertyEditDialogHeader, QFrame[class="PropertyEditDialogHeader"] {
+.DialogHeader {
+    background-color: {{bg-200}};
     border-bottom: 1px solid {{border-100}};
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
-    background-color: {{bg-200}};
 }
 
-QFrame#PropertyEditDialogFooter, QFrame[class="PropertyEditDialogFooter"] {
+.DialogContent {
+    background-color: {{bg-300}};
+    border: 1px solid {{border-100}};
+    border-radius: 6px;
+}
+
+.DialogContentRect {
+    background-color: {{bg-300}};
+    border: none;
+    border-radius: 0px;
+}
+
+
+.DialogFooter {
+    background-color: {{bg-200}};
     border-top: 1px solid {{border-100}};
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
-    background-color: {{bg-200}};
 }
 
-QLabel#PropertyEditDialogTitle, QLabel[class="PropertyEditDialogTitle"] {
+.DialogTitle {
     color: {{text-200}};
-    font-size: 20px;
+    font-size: 18pt;
     font-weight: bold;
 }
 
+.HeaderIconBox {
+    background-color: rgba(0, 224, 224, 0.2);
+    border-radius: 8px;
+}
+
+.HeaderTitle {
+    color: {{text-200}};
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+.HeaderSubtitle {
+    color: {{text-100}};
+    font-size: 10pt;
+}
+
+.PrintPreeviewThumbnail {
+    background-color: {{bg-300}};
+    border: none;
+    border-right: 1px solid {{border-100}};
+    border-radius: 0px;
+    border-bottom-left-radius: 12px;
+}
+
+.PrintPreeviewScrollContent {
+    background-color: transparent;
+}
+
+
 /* PropertyEditDialog section styling */
-QFrame.PropertyEditDialogSection {
+.PropertyEditorPanelSection {
     background-color: {{bg-300}};
     border: 1px solid {{border-100}};
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 10px;
 }
+
+.PropertyEditPreview {
+    background: transparent; 
+    border: 2px dashed #5c6b7d; 
+    border-radius: 5px;
+}
+
+.PropertySlider { 
+    border: none; 
+    height: 32px; 
+    background: transparent; 
+}
+
+.PropertySlider::groove:horizontal {
+    height: 4px; 
+    background: {{border-100}}; 
+    border-radius: 2px; 
+}
+
+.PropertySlider::handle:horizontal {
+    width: 16px; 
+    height: 16px; 
+    background: {{primary-100}}; 
+    border-radius: 8px; 
+    margin: -6px 0; 
+    border: none; 
+}
+
 
 QPushButton.MarkerButton, QPushButton[class="MarkerButton"] {
     background-color: {{bg-100}};
@@ -228,139 +636,6 @@ QHeaderView::section {
     border-right: 1px solid {{bg-200}};
     border-bottom: 1px solid {{bg-200}};
     font-weight: bold;
-}
-/* ============ 리스트뷰 ============ */
-QListWidget, QListView, QTreeView {
-    color: {{text-200}};
-    background-color: {{bg-200}};
-    selection-background-color: {{primary-100}};
-    border: 1px solid {{border-100}} !important;
-    border-radius: 4px;
-    padding: 1px;
-    outline: none;
-}
-
-QListWidget::item, QListView::item, QTreeView::item {
-    padding: 2px 6px;
-    border-radius: 0px;
-    margin: 0;
-    border: none;
-}
-
-QListWidget::item:hover, QListView::item:hover, QTreeView::item:hover {
-    background-color: {{bg-400}};
-    color: {{text-100}};
-}
-
-QListWidget::item:selected, QListView::item:selected, QTreeView::item:selected {
-    background-color: {{primary-100}};
-    color: #ffffff;
-}
-
-QTreeView::branch:selected {
-    background-color: {{primary-100}};
-}
-
-/* ============ 버튼 ============ */
-QPushButton {
-    background-color: {{bg-200}};
-    color: {{text-100}};
-    border: 2px solid transparent;
-    border-radius: 5px;
-    padding: 6px 12px;
-    min-height: 4px;
-    outline: none;
-}
-
-QPushButton:hover { background-color: {{bg-300}}; }
-QPushButton:pressed { background-color: {{primary-100}}; color: #FFFFFF; }
-QPushButton:focus { border: 2px solid {{primary-100}}; }
-QPushButton:checked { background-color: {{accent-100}}; color: #FFFFFF; font-weight: bold; }
-QPushButton:checked:hover { background-color: {{accent-100}}; opacity: 0.8; }
-
-/* ============ SetupWizard ============ */
-QWidget#SetupWizard {
-    background-color: #14171F;
-    border: none;
-}
-
-QWidget#SetupWizard QFrame#SetupPathCard {
-    background-color: #1b1f2a;
-    border: 1px solid #2a3142;
-    border-radius: 10px;
-}
-
-QWidget#SetupWizard QProgressBar,
-QWidget#SetupWizard QProgressBar#SetupProgressBar {
-    border: 1px solid #2f3648;
-    border-radius: 5px;
-    background-color: #252a36;
-    color: #d1d1d1;
-    text-align: center;
-}
-
-QWidget#SetupWizard QProgressBar::chunk,
-QWidget#SetupWizard QProgressBar#SetupProgressBar::chunk {
-    background-color: #3498db;
-    border-radius: 5px;
-}
-
-QTextEdit#LogView {
-    background-color: #0d0f14;
-    color: #d1d1d1;
-    border: 1px solid #2a3142;
-    border-radius: 8px;
-    font-family: "Consolas", "NanumGothicCoding", "나눔고딕 코딩";
-}
-
-QLineEdit#PathEdit {
-    background-color: #1a1f2a;
-    color: #d1d1d1;
-    border: 1px solid #2a3142;
-    border-radius: 8px;
-    padding: 8px;
-}
-
-QLineEdit#PathEdit:focus {
-    border: 1px solid #3498db;
-}
-
-QPushButton#PrimaryButton {
-    background-color: #3498db;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 14px;
-    font-weight: 700;
-}
-
-QPushButton#PrimaryButton:hover {
-    background-color: #2b88c4;
-}
-
-QPushButton#PrimaryButton:pressed {
-    background-color: #236e9f;
-}
-/* ============ SetupWizard End ============ */
-QPushButton:disabled { background-color: {{bg-300}}; color: {{text-200}}; }
-
-/* ============ 콤보박스 ============ */
-QComboBox {
-    font-size: 10px;
-    background-color: {{bg-200}};
-    border: 1px solid {{border-100}};
-    color: {{text-100}};
-    border-radius: 5px;
-    padding: 6px 8px;
-    min-height: 28px;
-}
-QComboBox:hover { border: 1px solid {{primary-100}}; }
-QComboBox:focus { border: 2px solid {{primary-100}}; padding: 5px 7px; }
-QComboBox::drop-down { border: none; width: 30px; }
-QComboBox::down-arrow { image: none; width: 12px; height: 12px; }
-
-QComboBox QAbstractItemView {
-    margin-top: 0px;
 }
 
 /* ============ PlusMultiHeaderTable & TableComboBox (Excel-style) ============ */
@@ -396,28 +671,54 @@ ClickableHeaderLabel[type="detail"]:hover {
     border-bottom: 3px solid {{primary-100}};
 }
 
-/* Table Specific ScrollBars */
-QScrollBar#tableVerticalScrollBar:vertical, 
-QScrollBar#tableHorizontalScrollBar:horizontal {
-    background: {{bg-200}};
+PlusComboBox {
     border: 1px solid {{border-100}};
+    border-radius: 4px;
+    padding: 1px 18px 1px 10px;
+    min-height: 32px;
+    background-color: transparent;
+    color: {{text-100}};
 }
-QScrollBar#tableVerticalScrollBar:vertical { width: 6px; border-top: none; border-bottom: none; border-right: none; }
-QScrollBar#tableHorizontalScrollBar:horizontal { height: 6px; border-left: none; border-right: none; border-bottom: none; }
+PlusComboBox:hover, PlusComboBox:focus {
+    border-color: {{primary-100}};
+}
+PlusComboBox::drop-down {
+    border: none;
+    background: transparent;
+    width: 24px;
+}
+PlusComboBox::down-arrow {
+    image: none;
+    width: 0px;
+    height: 0px;
+    border: none;
+}
 
-QScrollBar#tableVerticalScrollBar::handle:vertical,
-QScrollBar#tableHorizontalScrollBar::handle:horizontal {
-    background: {{primary-100}};
-    border-radius: 3px;
+PlusComboBox QAbstractItemView {
+    background-color: {{border-100}};
+    color: {{text-100}};
+    border-radius: 4px;
+    background-clip: padding-box;
+    outline: none;
+    font-size: 10pt;
+    padding: 0px;
     margin: 1px;
 }
-QScrollBar#tableVerticalScrollBar::handle:vertical:hover,
-QScrollBar#tableHorizontalScrollBar::handle:horizontal:hover {
-    background: {{primary-200}};
+
+PlusComboBox QAbstractItemView::item {
+    background-color: {{bg-100}};
+    padding: 6px 10px;
+    border-radius: 0px;
+    margin: 0px;
+}
+
+PlusComboBox QAbstractItemView::item:selected {
+    background-color: {{primary-100}};
+    color: {{text-200}};
 }
 
 /* Table ComboBox Styling */
-QComboBox[class="TableComboBox"] {
+.TableComboBox {
     background-color: transparent;
     color: {{text-100}};
     border: none;
@@ -426,23 +727,23 @@ QComboBox[class="TableComboBox"] {
     font-size: 10pt;
 }
 
-QComboBox[class="TableComboBox"]:hover, 
-QComboBox[class="TableComboBox"]:focus {
+.TableComboBox:hover, 
+.TableComboBox:focus {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* Row Selection State */
-QComboBox[class="TableComboBox"][selected="true"] {
+.TableComboBox[selected="true"] {
     background-color: {{primary-100}}33; /* Highlights the cell within the selected row */
     color: {{text-200}};
 }
 
 /* Data Interaction States */
-QComboBox[class="TableComboBox"][aiUpdated="true"] {
+.TableComboBox[aiUpdated="true"] {
     background-color: rgba(0, 133, 255, 0.12); /* Subtle glow for AI updated cells */
 }
 
-QComboBox[class="TableComboBox"]::drop-down {
+.TableComboBox::drop-down {
     border: none;
     subcontrol-origin: padding;
     subcontrol-position: top right;
@@ -450,13 +751,13 @@ QComboBox[class="TableComboBox"]::drop-down {
     width: 20px;
 }
 
-QComboBox[class="TableComboBox"]::down-arrow {
+.TableComboBox::down-arrow {
     image: none; /* We draw a custom chevron in PlusComboBox.paintEvent */
     width: 0px;
     height: 0px;
 }
 
-QComboBox[class="TableComboBox"] QAbstractItemView {
+.TableComboBox QAbstractItemView {
     background-color: {{bg-100}};
     color: {{text-200}};
     border: 1px solid {{border-100}};
@@ -466,43 +767,43 @@ QComboBox[class="TableComboBox"] QAbstractItemView {
     padding: 4px;
 }
 
-QComboBox[class="TableComboBox"] QAbstractItemView::item {
+.TableComboBox QAbstractItemView::item {
     padding: 6px 8px;
     border-radius: 4px;
 }
 
-QComboBox[class="TableComboBox"] QAbstractItemView::item:selected {
+.TableComboBox QAbstractItemView::item:selected {
     background-color: {{primary-100}};
     color: white;
 }
 
-QComboBox[class="TableComboBox"] QLineEdit {
+.TableComboBox QLineEdit {
     background: transparent;
     border: none;
     color: inherit;
     padding: 0px;
 }
 
-#plusTitleBar {
+.plusTitleBar {
     background-color: {{bg-100}};
     border-bottom: 1px solid {{border-100}};
 }
 
-#logo_widget {
+.logoWidget {
     background: transparent;
     border: none;
     border-radius: 0px;
     margin-left: 4px;
 }
 
-#search_frame {
+.TitleSearchFrame {
     background-color: {{bg-200}};
     border: 1px solid {{border-200}};
     border-radius: 8px;
     padding: 2px 12px;
 }
 
-#search_edit {
+.TitleSearchEdit {
     background-color: transparent;
     color: {{text-200}};
     border: none;
@@ -511,146 +812,92 @@ QComboBox[class="TableComboBox"] QLineEdit {
     font-size: 10pt;
 }
 
-#clear_search_btn {
+.ClearSearchButton {
     background: transparent;
     border: none;
     border-radius: 6px;
 }
-#clear_search_btn:hover { background-color: rgba(255, 255, 255, 0.08); }
-#clear_search_btn QLabel { color: {{text-100}}; font-family: "{{font-icon}}" !important; font-size: 18px; }
-#clear_search_btn:hover QLabel { color: #FFFFFF; }
-
-/* Title Bar Context Buttons */
-QPushButton[objectName^="title_btn_"] {
-    background: transparent;
-    color: {{text-200}};
-    border: none;
-    border-radius: 6px;
-}
-QPushButton[objectName^="title_btn_"]:hover { background-color: rgba(255, 255, 255, 0.1); }
-QPushButton[objectName^="title_btn_"]:checked { background-color: rgba(0, 133, 255, 0.15); }
-
-/* Internal Labels in context buttons */
-QPushButton[objectName^="title_btn_"] QLabel { 
-    color: {{text-200}}; 
-    font-family: "{{font-icon}}" !important; 
-    font-size: 18px; 
-    background: transparent;
-}
-
-/* Helper specific button overrides */
-QPushButton#title_btn_help QLabel, QPushButton#title_btn_setting QLabel {
-    font-size: 18px;
-}
+.ClearSearchButton:hover { background-color: rgba(255, 255, 255, 0.08); }
+.ClearSearchButton QLabel { color: {{text-100}}; font-family: "{{font-icon}}" !important; font-size: 16pt; }
+.ClearSearchButton:hover QLabel { color: #FFFFFF; }
 
 /* ============ Nav Frame (Segmented Control) ============ */
-#nav_frame {
-    background-color: {{bg-300}};
-    border: 1px solid {{border-200}};
-    border-radius: 8px;
-}
-
-QPushButton.NavButton {
+.NavButton {
     background-color: transparent;
     border: none;
     border-radius: 6px;
     color: {{text-200}};
     padding: 0px 6px;
 }
-QPushButton.NavButton:hover { background-color: rgba(255, 255, 255, 0.05); color: white; }
-QPushButton.NavButton:checked { background-color: {{primary-100}}; color: white; }
+.NavButton:hover { background-color: {{primary-100_op60}}; color: {{text-200}}; }
+.NavButton:checked { background-color: {{primary-100}}; color: {{text-200}}; }
 
-QPushButton.NavButton QLabel {
+.NavButton QLabel {
     color: {{text-200}};
     font-family: 'Noto Sans KR';
-    font-size: 11pt;
+    font-size: 10pt;
     font-weight: bold;
     background: transparent;
 }
-QPushButton.NavButton QLabel.Icon {
+.NavButton QLabel.Icon {
     color: {{text-200}};
     font-family: "{{font-icon}}" !important;
-    font-size: 18px !important;
+    font-size: 14pt !important;
     margin-right: 8px;
     background: transparent;
 }
 
+
 /* Window Buttons (Traffic Lights) */
-#win_btn_min, #win_btn_max, #win_btn_close {
-    border-radius: 8px;
+.win_btn_min, .win_btn_max, .win_btn_close {
+    border-radius: 10px;
     border: none;
+    alignment: center;
+    font-size: 9pt;
 }
-#win_btn_min { background-color: #febc2e; }
-#win_btn_min:hover { background-color: #e1a116; }
-#win_btn_max { background-color: #28c940; }
-#win_btn_max:hover { background-color: #12a024; }
-#win_btn_close { background-color: #ff5f57; }
-#win_btn_close:hover { background-color: #e04845; }
+.win_btn_min { background-color: #febc2e; }
+.win_btn_min:hover { background-color: #e1a116; }
+.win_btn_max { background-color: #28c940; }
+.win_btn_max:hover { background-color: #12a024; }
+.win_btn_close { background-color: #ff5f57; }
+.win_btn_close:hover { background-color: #e04845; }
 
-/* ============ Icons ============ */
-.Icon {
-    font-family: "{{font-icon}}" !important;
-    font-size: 24px;
-}
-
-.Icon[active="true"] { color: white; }
-.Icon[active="false"] { color: {{text-100}}; }
-
-.Icon_18 {
-    font-family: "{{font-icon}}" !important;
-    font-size: 18px;
-}
-
-.Icon_18[active="true"] { color: white; }
-.Icon_18[active="false"] { color: {{text-100}}; }
-
-.Icon_primary {
-    font-family: "{{font-icon}}" !important;
-    font-size: 24px;
-    color: {{primary-100}};
-}
-
-.Icon_primary[active="true"] { color: {{primary-100}}; }
-.Icon_primary[active="false"] { color: {{text-100}}; }
-
-#ActionButton, #ProjectExplorerIconButton, #ExplorerMoreBtn, #btn_home, #sync_refresh {
+.ExplorerMoreBtn, .HomeButton, .SyncRefresh {
     background: transparent;
     border: none;
     border-radius: 6px;
     color: {{text-200}};
     font-family: "{{font-icon}}" !important;
-    font-size: 18px;
+    font-size: 16pt;
     padding: 2px;
 }
 
-#ActionButton:hover, #ProjectExplorerIconButton:hover, #ExplorerMoreBtn:hover, #btn_home:hover, #sync_refresh:hover {
+.ExplorerMoreBtn:hover, .HomeButton:hover, .SyncRefresh:hover {
     background-color: rgba(255, 255, 255, 0.08);
     color: white;
 }
 
+.PageTitle { color: {{text-200}}; font-size: 16pt; font-weight: bold; }
+.PanelTitle { color: {{text-200}}; font-size: 11pt; font-weight: bold; }
+.PageSubTitle { color: {{text-100}}; font-size: 9pt; font-weight: 600; letter-spacing: 0.5px; }
+.PanelSubTitle { color: {{text-200}}; font-size: 9pt; font-weight: bold; }
+
+.PageCrumbLabel { color: {{text-100}}; font-size: 10pt; font-weight: 600; letter-spacing: 0.5px; }
+.PageCrumbValue { color: {{text-300}}; font-size: 9pt; font-weight: 600; letter-spacing: 0.5px; }
+
+.ConfigDivider {
+    background-color: {{border-100}};
+}
+
+
 /* ============ Project Explorer ============ */
-#MainContainer { 
-    background-color: {{bg-100}}; 
-    border: none;
+.ProjectExplorer {
+    background-color: {{bg-200}};
+    border-radius: 0px;
+    border-right: 1px solid {{border-100}};
+    color: {{text-100}};
+    font-weight: normal;
 }
-
-#ExplorerPanel { 
-    background-color: {{bg-400}}; 
-    border: none;
-}
-
-#ExplorerHeader { 
-    border: none;
-    border-bottom: 1px solid {{border-100}};
-}
-
-#ExplorerScrollContent, #ExplorerScrollArea { 
-    background-color: {{bg-300}};
-    border: none;
-}
-
-#AppTitle { color: {{text-200}}; font-size: 20px; font-weight: bold; }
-#AppSubTitle { color: {{text-100}}; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; }
 
 /* ============ WeldJointLog ============ */
 #WeldJointLog {
@@ -675,30 +922,13 @@ QPushButton.NavButton QLabel.Icon {
 
 #WeldJointLogSubtitle {
     color: {{text-200}};
-    font-size: 9px;
+    font-size: 7pt;
 }
 
 #WeldJointLogContainer {
     background-color: {{bg-100}};
     border: 1px solid {{border-100}};
     border-radius: 6px;
-}
-
-#WeldJointLogBtnState, #WeldJointLogBtnClose,
-.WeldJointLogIconButton {
-    background-color: transparent;
-    color: {{text-100}};
-    border: none;
-    font-family: "{{font-icon}}" !important;
-    font-size: 18px;
-    min-width: 32px;
-    min-height: 32px;
-}
-
-#WeldJointLogBtnState:hover, #WeldJointLogBtnClose:hover,
-.WeldJointLogIconButton:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: {{primary-100}};
 }
 
 .StatusMessage {
@@ -714,6 +944,7 @@ QPushButton.NavButton QLabel.Icon {
     border-radius: 6px;
     padding: 0 10px;
 }
+
 
 .SummaryBadgeIndicator {
     background-color: {{primary-100}};
@@ -731,182 +962,135 @@ QPushButton.NavButton QLabel.Icon {
     font-weight: 800;
 }
 
-#SearchBox {
+.SearchBox {
     background-color: {{bg-300}};
     border: 1px solid {{border-100}};
     border-radius: 8px;
     color: white;
     padding: 8px 12px;
-    font-size: 13px;
+    font-size: 9pt;
 }
-#SearchBox:focus {
+.SearchBox:focus {
     border: 1px solid {{primary-100}};
 }
 
-#ActionToolbar {
-    background-color: {{bg-200}};
-    border-top: 1px solid {{border-100}};
-}
-
-#ActionLabel {
-    color: {{text-100}};
-    font-size: 9px;
-    font-weight: 500;
-}
-
-#ActionButton[class="Danger"]:hover {
-    background-color: rgba(248, 113, 113, 0.1);
-    color: #f87171;
-}
-
 /* ============ Project Explorer Compact Toolbar ============ */
-#ProjectToolBarContainer {
+.ProjectToolBarContainer {
     background-color: #25282E;
     border-top: 1px solid #353B48;
     padding: 10px;
 }
 
-#ProjectToolBarContainer QPushButton {
-    background-color: #31363F;
-    color: #E1E2E5;
-    border: 1px solid transparent;
-    border-radius: 6px;
+.ProjectToolBarContainer QPushButton {
+    background-color: {{bg-200}};
+    color: {{text-200}};
+    border: 1px solid {{border-100}};
+    border-radius: 0px;
     padding: 8px 10px;
     text-align: left;
-    font-size: 12px;
+    font-size: 10pt;
     font-weight: 600;
 }
 
-#ProjectToolbarIcon {
-    font-family: "{{font-icon}}" !important;
-    font-size: 18px;
-    color: #B9C2D0;
-    background: transparent;
+.ProjectToolBarContainer QPushButton:hover {
+    background-color: {{bg-300}};
+    border: 1px solid {{primary-200}};
 }
 
-#ProjectToolbarText {
-    color: #E1E2E5;
-    font-size: 12px;
-    font-weight: 600;
-    background: transparent;
+.ProjectToolBarContainer QPushButton:hover #ProjectToolbarIcon,
+.ProjectToolBarContainer QPushButton:hover #ProjectToolbarText {
+    color: {{text-100}};
 }
 
-#ProjectToolBarContainer QPushButton:hover {
-    background-color: #3D4450;
-    border: 1px solid #4A90E2;
+.ProjectToolBarContainer QPushButton:disabled #ProjectToolbarIcon,
+.ProjectToolBarContainer QPushButton:disabled #ProjectToolbarText {
+    color: {{text-100}};
 }
 
-#ProjectToolBarContainer QPushButton:hover #ProjectToolbarIcon,
-#ProjectToolBarContainer QPushButton:hover #ProjectToolbarText {
-    color: #FFFFFF;
-}
-
-#ProjectToolBarContainer QPushButton:disabled #ProjectToolbarIcon,
-#ProjectToolBarContainer QPushButton:disabled #ProjectToolbarText {
-    color: #6E7685;
-}
-
-#BtnQuickAdd {
-    background-color: #31363F;
-    color: #E1E2E5;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: bold;
-    min-height: 40px;
-}
-
-#BtnRestoreFull {
-    background-color: #3A3F4B;
-    color: #A0A8B4;
-    border: 1px dashed #4D5461;
-    border-radius: 4px;
-    font-size: 12px;
-    min-height: 40px;
-}
-
-#BtnRestoreFull:hover {
-    background-color: #454B59;
-    color: #FFFFFF;
-    border: 1px solid #4A90E2;
-}
-
-#BtnQuickAdd,
-#BtnRestoreFull {
-    min-height: 40px;
-}
-
-.ExplorerItemHeaderTitle {
-    font-size: 13px;
+.TreeItemHeaderTitle {
+    font-size: 10pt;
     font-weight: 700;
 }
-.ExplorerItemHeaderTitle[active="true"] { color: {{text-300}}; }
-.ExplorerItemHeaderTitle[active="false"] { color: {{text-200}}; }
+.TreeItemHeaderTitle[active="true"] { color: {{text-300}}; }
+.TreeItemHeaderTitle[active="false"] { color: {{text-200}}; }
 
-.ExplorerItemTitle {
-    font-size: 11px;
+.TreeItemTitle {
+    font-size: 9pt;
     font-weight: 500;
 }
-.ExplorerItemTitle[active="true"] { color: #FFFFFF; }
-.ExplorerItemTitle[active="false"] { color: {{text-200}}; }
+.TreeItemTitle[active="true"] { color: {{text-200}}; }
+.TreeItemTitle[active="false"] { color: {{text-100}}; }
 
-.ExplorerItemDesc {
-    font-size: 11px;
+.TreeItemDesc {
+    font-size: 9pt;
 }
-.ExplorerItemDesc[active="true"] { color: rgba(255, 255, 255, 0.7); }
-.ExplorerItemDesc[active="false"] { color: {{text-100}}; }
+.TreeItemDesc[active="true"] { color: {{text-200_op70}}; }
+.TreeItemDesc[active="false"] { color: {{text-100}}; }
 
-.ExplorerBadge {
+.TreeItemBadge {
     padding: 2px 4px;
     border-radius: 4px;
-    font-size: 9px;
+    font-size: 7pt;
     font-weight: bold;
     color: white;
     qproperty-alignment: 'AlignCenter';
     min-height: 12px;
     min-width: 55px;
 }
-.ExplorerBadge[status="ongoing"] { background-color: {{primary-100}}; }
-.ExplorerBadge[status="completed"] { background-color: {{green-100}}; }
-.ExplorerBadge[status="onhold"] { background-color: {{yellow-100}}; }
-.ExplorerBadge[status="cancelled"] { background-color: {{rose-100}}; }
-.ExplorerBadge[status="contracted"] { background-color: #3b82f6; }
-.ExplorerBadge[status="awaiting"] { background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.15); }
+.TreeItemBadge[status="ongoing"] { background-color: {{primary-100}}; }
+.TreeItemBadge[status="completed"] { background-color: {{green-100}}; }
+.TreeItemBadge[status="onhold"] { background-color: {{yellow-100}}; }
+.TreeItemBadge[status="cancelled"] { background-color: {{rose-100}}; }
+.TreeItemBadge[status="contracted"] { background-color: #3b82f6; }
+.TreeItemBadge[status="awaiting"] { background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.15); }
 .ExplorerBadge[status="default"] { background-color: {{bg-300}}; }
 
-#WorkOrderItem[active="true"] { 
-    background-color: {{primary-100}}; 
-    border-radius: 10px; 
+QFrame.ListFrameItem, .ListFrameItem, QFrame[class="ListFrameItem"], [class="ListFrameItem"], IsometricDrawingItem { 
+    background-color: {{bg-300}}; 
+    color: {{text-100}};
 }
-#WorkOrderItem:hover {
+
+QFrame.ListFrameItem[active="true"], .ListFrameItem[active="true"], QFrame[class="ListFrameItem"][active="true"], [class="ListFrameItem"][active="true"], IsometricDrawingItem[active="true"] { 
+    background-color: {{primary-100_op15}}; 
+    border: 1px solid {{primary-100_op80}};
+    border-radius: 4px; 
+}
+QFrame.ListFrameItem[active="false"], .ListFrameItem[active="false"], QFrame[class="ListFrameItem"][active="false"], [class="ListFrameItem"][active="false"], IsometricDrawingItem[active="false"] { 
+    background-color: {{bg-300}}; 
+}
+QFrame.ListFrameItem[active="false"]:hover, .ListFrameItem[active="false"]:hover, QFrame[class="ListFrameItem"][active="false"]:hover, [class="ListFrameItem"][active="false"]:hover, IsometricDrawingItem[active="false"]:hover {
     background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-}
-#WorkOrderItem[active="true"]:hover {
-    background-color: {{primary-100}};
+    border: 1px solid {{primary-100_op60}};
+    border-radius: 4px;
 }
 
-#ProjectGroupFolderIcon { 
-    font-family: "{{font-icon}}" !important; 
-    font-size: 18px !important; }
-#ProjectGroupFolderIcon[open="true"] { color: {{primary-100}}; }
-#ProjectGroupFolderIcon[open="false"] { color: {{text-100}}; }
+QFrame.ListFrameItem[active="true"]:hover, .ListFrameItem[active="true"]:hover, QFrame[class="ListFrameItem"][active="true"]:hover, [class="ListFrameItem"][active="true"]:hover, IsometricDrawingItem[active="true"]:hover {
+    background-color: {{primary-100_op05}};
+    border: 1px solid {{primary-100_op80}};
+}
 
-#ProjectGroupChevron { 
+.ProjectGroupFolderIcon { 
     font-family: "{{font-icon}}" !important; 
-    font-size: 18px !important; 
+    font-size: 16pt !important; }
+.ProjectGroupFolderIcon[open="true"] { color: {{primary-100}}; }
+.ProjectGroupFolderIcon[open="false"] { color: {{text-100}}; }
+
+.ProjectGroupChevron { 
+    font-family: "{{font-icon}}" !important; 
+    font-size: 16pt !important; 
     color: {{text-300}}; }
 
-#ProjectGroupHeader[selected="true"] {
+.ProjectGroupHeader[selected="true"] {
     border-left: 3px solid {{text-300}};
     padding-left: 8px;
 }
 
-#ProjectGroupHeader[parentActive="true"] {
-    border-left: 3px solid rgba(255,255,255,0.2);
+.ProjectGroupHeader[parentActive="true"] {
+    border-left: 3px solid {{text-200_op20}};
     padding-left: 8px;
 }
 
-#ExplorerIndentLine {
+.ExplorerIndentLine {
     border-left: 1.5px solid {{border-100}};
     margin-left: 14px;
     margin-top: 4px;
@@ -914,49 +1098,100 @@ QPushButton.NavButton QLabel.Icon {
 }
 
 /* ============ Popup Menus ============ */
-#MorePopupMenuContainer { background: transparent; }
-#RoundedMenuFrame { background-color: #1e1e1e; border: 1px solid {{border-200}}; border-radius: 8px; }
+.MorePopupMenu { background: transparent; }
 
 .MenuActionButton {
     background-color: transparent;
     border: none;
-    padding: 0px 16px;
+    padding: 0px 24px;
 }
-.MenuActionButton:hover { background-color: rgba(255, 255, 255, 0.1); }
-.MenuActionButton:hover QLabel { color: white; }
+.MenuActionButton:hover { background-color: {{text-200_op10}}; }
+.MenuActionButton:hover QLabel { color: {{text-200}}; }
 
-#MenuActionIcon { color: {{text-100}}; font-size: 18px; }
-#MenuActionText { color: {{text-200}}; font-size: 12px; }
+.RoundedMenuFrame { 
+    background-color: {{bg-200}}; 
+    border: 1px solid {{border-200}}; 
+    border-radius: 8px; 
+}
 
-#MenuSeparator {
+.MenuActionText { color: {{text-200}}; font-size: 10pt; }
+
+.MenuSeparator {
     background-color: {{border-100}};
     max-height: 1px;
     margin: 4px 16px;
 }
 
 /* ============ Plus Horizontal Navbar ============ */
-#PlusHorizontalNavbar {
+.PlusHorizontalNavbar {
     background-color: {{bg-300}};
     border-bottom: 1px solid {{border-100}};
 }
 
 .nav_icon {
     font-family: "{{font-icon}}" !important;
-    font-size: 24px;
+    font-size: 22pt;
     color: {{text-100}};
 }
 
-.breadcrumb_text { color: {{text-300}}; font-family: 'Noto Sans KR'; font-size: 13px; margin: 0px 0px; }
-.breadcrumb_active { color: {{text-200}}; font-family: 'Noto Sans KR'; font-size: 13px; font-weight: bold; margin: 0px 0px; }
-.breadcrumb_sep { color: {{text-100}}; font-family: "{{font-icon}}" !important; font-size: 14px; margin: 0px 2px; }
+.breadcrumb_text { 
+    color: {{text-300}}; 
+    font-family: 'Noto Sans KR'; 
+    font-size: 10pt; 
+    margin: 0px 0px; 
+}
+.breadcrumb_active { 
+    color: {{text-200}}; 
+    font-family: 'Noto Sans KR'; 
+    font-size: 10pt; 
+    font-weight: bold; 
+    margin: 0px 0px; 
+}
+.breadcrumb_sep { 
+    color: {{text-100}}; 
+    font-family: "{{font-icon}}" !important; 
+    font-size: 10pt; 
+    margin: 0px 2px; 
+}
+
+/* ============ Horizontal Navbar Weather/Status Stylings ============ */
+.navbar_sync_icon {
+    font-family: "{{font-icon}}" !important;
+    font-size: 13pt;
+    color: {{text-200}};
+}
+.navbar_sync_text {
+    font-family: 'Noto Sans KR';
+    font-size: 9pt;
+    color: {{text-200}};
+}
+
+.navbar_temp_icon {
+    font-family: "{{font-icon}}" !important;
+    font-size: 13pt;
+    color: {{text-300}};
+}
+.navbar_temp_text {
+    font-family: 'Noto Sans KR';
+    font-size: 9pt;
+    color: {{text-300}};
+}
+
+.navbar_humid_icon {
+    font-family: "{{font-icon}}" !important;
+    font-size: 13pt;
+    color: {{primary-100}};
+}
+.navbar_humid_text {
+    font-family: 'Noto Sans KR';
+    font-size: 9pt;
+    color: {{primary-100}};
+}
 
 /* ============ Weather Item ============ */
-
 #main_weather_icon {
     color: #4dd0e1;
 }
-
-
 #weather_pill {
     background-color: rgba(10, 34, 34, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -968,12 +1203,12 @@ QPushButton.NavButton QLabel.Icon {
     font-weight: bold;
 }
 #pill_icon {
+    font-size: 18pt;
     color: #4dd0e1;
 }
 #pill_temp {
     color: #ffffff;
 }
-
 #weather_widget {
     background-color: {{bg-100}}; 
     border-radius: 6px; /* Rounded corners for the strip */
@@ -988,120 +1223,75 @@ QPushButton.NavButton QLabel.Icon {
     background-color: rgba(255, 255, 255, 0.05); 
 }
 #weather_item_active {
-    background-color: {{primary-100}};
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid {{primary-100}};
     border-radius: 4px;
 }
 #weather_sep {
-    background-color: {{border-200"}};
+    background-color: {{border-200}};
     min-height: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-QLabel[class="weather_date"] { color: {{text-400}}; font-size: 12px; font-weight: normal; }
-QLabel[class="weather_date_active"] { color: {{text-300}} ; font-size: 12px; font-weight: bold; }
-QLabel[class="weather_temp"] { color: {{text-100}}; font-size: 10px; font-weight: bold; }
-QLabel[class="weather_temp_active"] { color: {{text-200}}; font-size: 10px; font-weight: bold; }
-QLabel[class="weather_icon"] { color: {{text-300}}; font-family: "{{font-icon}}" !important; font-size: 20px; }
-QLabel[class="weather_icon"][active="true"] { color: {{text-200}}; }
-QLabel[class="weather_icon"][active="false"] { color: {{text-100}}; }
+QLabel[class="weather_date"] { 
+    color: {{text-300}}; 
+    font-size: 10pt; 
+    font-weight: normal; 
+}
+
+QLabel[class="weather_date_active"] { 
+    color: {{text-300}}; 
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+QLabel[class="weather_temp"] { 
+    color: {{text-100}}; 
+    font-size: 7pt; 
+    font-weight: bold;
+}
+
+QLabel[class="weather_temp_active"] { 
+    color: {{text-200}}; 
+    font-size: 8pt; 
+    font-weight: bold; 
+}
+
+QLabel[class="weather_icon"] {
+    color: {{text-300}};
+    font-family: "{{font-icon}}" !important;
+    font-size: 16pt;
+}
+
+QLabel[class="weather_icon"][active="true"] { 
+    color: {{text-200}}; 
+}
+
+QLabel[class="weather_icon"][active="false"] { 
+    color: {{text-100}}; 
+}
 
 QLabel[class="weather_pop_drop"] { 
     color: #64B5F6; 
     font-family: "{{font-icon}}" !important; 
-    font-size: 16px; 
+    font-size: 12pt; 
     margin-right: 2px; 
 }
-QLabel[class="weather_pop_text"] { color: #90CAF9; font-size: 9px; font-weight: bold; }
+QLabel[class="weather_pop_text"] { 
+    color: #90CAF9; 
+    font-size: 7pt; 
+    font-weight: bold; 
+}
+
 QLabel[class="weather_temp_icon"] { 
     color:{{text-300}}; 
     font-family: "{{font-icon}}" !important; 
-    font-size: 16px; 
+    font-size: 12pt; 
     margin-right: 2px;
 }
 
-/* ============ Dashboard ============ */
-.DashboardCard { background-color: {{bg-200}}; border: 1px solid {{border-100}}; border-radius: 8px; }
-.DashboardTitle { color: {{text-100}}; font-weight: bold; font-size: 11px; }
-.DashboardValue { color: {{text-200}}; font-weight: bold; font-size: 28px; }
-
 /* ============ IsometricDrawingList ============ */
-#IsometricDrawingList {
-    background-color: {{bg-100}};
-    border-left: 1px solid {{border-100}};
-}
-
-#DrawingListHeader {
-    background-color: transparent;
-    border-bottom: 1px solid {{border-100}};
-}
-
-#DrawingListTitleIcon {
-    font-family: "{{font-icon}}" !important;
-    font-size: 20px;
-    color: {{primary-100}};
-}
-
-#DrawingListTitleText {
-    color: white;
-    font-family: "plus_font_sans_bold";
-    font-size: 14pt;
-    font-weight: bold;
-}
-
-#DrawingListSearchContainer {
-    background-color: {{bg-100}};
-    border: 1px solid {{border-100}};
-    border-radius: 4px;
-}
-
-#DrawingListSearchIcon {
-    font-family: "{{font-icon}}" !important;
-    font-size: 18px;
-    color: {{text-100}};
-}
-
-#DrawingListSearchInput {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 10pt;
-    padding: 0px;
-}
-
-#DrawingListScrollArea {
-    background: transparent;
-    border: none;
-}
-
-#DrawingListContainer {
-    background: transparent;
-}
-
-#DrawingListFooter {
-    background-color: rgba(18, 18, 18, 0.3);
-    border-top: 1px solid {{border-100}};
-}
-
-QFrame[class="DrawingItem"], #DrawingItem {
-    background-color: transparent;
-    border: 1px solid transparent;
-    border-radius: 6px;
-}
-QFrame[class="DrawingItem"][active="true"], #DrawingItem[active="true"] {
-    background-color: rgba({{primary-100-rgb}}, 0.15); /* primary-100 60% opacity */
-    border: 1px solid {{primary-100}};
-}
-QFrame[class="DrawingItem"]:hover, #DrawingItem:hover {
-    background-color: rgba(255, 255, 255, 0.03);
-}
-QFrame[class="DrawingItem"][active="true"]:hover, #DrawingItem[active="true"]:hover {
-    border-color: {{primary-100}};
-}
-QFrame[class="DrawingItem"][active="false"]:hover, #DrawingItem[active="false"]:hover {
-    border-color: {{border-100}};
-}
-
 .DrawingListTitle { 
     font-family: "grotesk";
     font-size: 10pt; 
@@ -1117,10 +1307,11 @@ QFrame[class="DrawingItem"][active="false"]:hover, #DrawingItem[active="false"]:
 }
 .DrawingListLine[active="true"] { color: {{text-300}}; }
 
+/* Badge Styles */
 .StatusBadge {
     border-radius: 4px;
     padding: 2px 2px;
-    font-size: 9px;
+    font-size: 7pt;
     font-weight: bold;
     text-transform: uppercase;
     border: 1px solid transparent;
@@ -1130,14 +1321,10 @@ QFrame[class="DrawingItem"][active="false"]:hover, #DrawingItem[active="false"]:
 .StatusBadge[status="loading"] { color: #94a3b8; background-color: rgba(148, 163, 184, 0.14); border-color: rgba(148, 163, 184, 0.26); }
 .StatusBadge[status="pending"] { color: #ef4444; background-color: rgba(239, 68, 68, 0.14); border-color: rgba(239, 68, 68, 0.30); }
 .StatusBadge[status="in-progress"] { color: #3b82f6; background-color: rgba(59, 130, 246, 0.14); border-color: rgba(59, 130, 246, 0.30); }
+.StatusBadge[status="inprogress"] { color: #3b82f6; background-color: rgba(59, 130, 246, 0.14); border-color: rgba(59, 130, 246, 0.30); }
 .StatusBadge[status="completed"] { color: #22c55e; background-color: rgba(34, 197, 94, 0.14); border-color: rgba(34, 197, 94, 0.28); }
 .StatusBadge[status="file-not-found"] { color: #f59e0b; background-color: rgba(245, 158, 11, 0.16); border-color: rgba(245, 158, 11, 0.30); }
-
-#EditingBadge {
-    color: white;
-    background-color: #ef4444;
-    border: 1px solid #ef4444;
-}
+.StatusBadge[status="filenotfound"] { color: #f59e0b; background-color: rgba(245, 158, 11, 0.16); border-color: rgba(245, 158, 11, 0.30); }
 
 .RevisionBadge {
     border-radius: 4px;
@@ -1163,6 +1350,8 @@ QFrame[class="DrawingItem"][active="false"]:hover, #DrawingItem[active="false"]:
     color: {{accent-100}};
 }
 
+/* ============ Drawing Progress Bar ============ */
+
 .DrawingProgress {
     background-color: rgba(71, 85, 105, 0.45);
     border: none;
@@ -1176,14 +1365,14 @@ QFrame[class="DrawingItem"][active="false"]:hover, #DrawingItem[active="false"]:
 .DrawingProgress[status="inprogress"]::chunk { background-color: #3b82f6; }
 .DrawingProgress[status="pending"]::chunk { background-color: #ef4444; }
 
-#FooterIcon {
+.FooterIcon {
     font-family: "{{font-icon}}" !important;
-    font-size: 12px;
+    font-size: 10pt;
     color: {{text-100}};
 }
 
-#FooterLabel {
-    font-family: "plus_font_sans_500";
+.FooterLabel {
+    font-family: "{{font-grotesk}}";
     font-size: 8pt;
     font-weight: 500;
     color: {{text-100}};
@@ -1192,10 +1381,6 @@ QFrame[class="DrawingItem"][active="false"]:hover, #DrawingItem[active="false"]:
 #ZoomableGraphicsView {
     background-color: {{bg-100}};
     border: none;
-}
-
-#ZoomableGraphicsViewViewport {
-    background-color: {{bg-100}};
 }
 
 /* Welding Dock Styling */
@@ -1246,14 +1431,6 @@ QDockWidget#WeldingDock > QWidget {
 }
 
 /* ============ IntegratedWeldingProcess ============ */
-QDockWidget#WeldingDock > #integratedWeldingProcess {
-    background-color: transparent;
-    border-top: none;
-    border-bottom: none;
-    border-left: 1px solid {{border-100}};
-    border-right: 1px solid {{border-100}};
-    border-radius: 0px;
-}
 
 .StepSection {
     background-color: transparent;
@@ -1265,10 +1442,10 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
 }
 
 .StepBadge {
-    color: #ffffff;
+    color: {{text-200}};
     background-color: {{primary-100}};
     font-weight: bold;
-    font-size: 12px;
+    font-size: 9pt;
     padding: 4px 6px;
     border-radius: 4px;
 }
@@ -1276,7 +1453,7 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
 .StepTitle {
     color: {{text-300}};
     font-weight: bold;
-    font-size: 14px;
+    font-size: 9pt;
     padding-left: 4px;
     background: transparent;
 }
@@ -1286,10 +1463,10 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
     border: none;
 }
 
-.FieldLabel {
-    color: #ffffff; 
+.FieldLabelWeldingProcess {
+    color: {{text-100}}; 
     font-weight: bold; 
-    font-size: 12px; 
+    font-size: 9pt; 
     border: none;
     background: transparent;
 }
@@ -1319,7 +1496,7 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
 .WeldingHeaderBtn {
     background: transparent;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 9pt;
     border: 1px solid {{border-100}};
     border-radius: 4px;
     color: {{text-200}};
@@ -1327,27 +1504,34 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
 
 .WeldingHeaderBtn:hover {
     background-color: {{primary-100}};
-    color: white;
+    color: {{text-200}};
+}
+
+.WeldingHeaderBtn:checked, 
+QPushButton[class="WeldingHeaderBtn"]:checked {
+    background-color: {{primary-100}} !important;
+    border: 1px solid {{primary-100}} !important;
+    color: {{text-200}} !important;
 }
 
 .WeldingHeaderBtn:disabled {
-    color: {{text-400}};
+    color: {{text-100}};
     border-color: {{border-200}};
 }
 
 .InfoFrame {
-    background-color: transparent;
+    background-color: {{bg-100}};
     border: 1px solid {{border-100}};
     border-radius: 4px;
 }
 
 #integratedWeldingProcess[isFloating="true"] .InfoFrame {
-    border-color: {{border-400}};
+    border-color: {{border-100}};
 }
 
 .InfoLabel {
     color: {{text-300}};
-    font-size: 13px;
+    font-size: 10pt;
     font-weight: bold;
     background: transparent;
 }
@@ -1365,7 +1549,7 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
     border: 1px solid rgba(148, 163, 184, 0.2);
     border-radius: 6px;
     padding: 3px 5px;
-    font-size: 12px;
+    font-size: 9pt;
     min-width: 0px;
 }
 
@@ -1401,8 +1585,8 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
 }
 
 .ToolbarGroupTitle {
-    color: {{text-100}};
-    font-size: 10px;
+    color: {{text-200}};
+    font-size: 8pt;
     font-weight: 600;
     padding-bottom: 2px;
 }
@@ -1411,7 +1595,7 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
     background: transparent;
     border: 1px solid transparent;
     border-radius: 8px;
-    color: {{text-100}};
+    color: {{text-200}};
     padding: 4px;
 }
 
@@ -1432,36 +1616,61 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
 
 .ToolbarButton:disabled {
     opacity: 0.5;
-    color: {{text-400}};
+    color: {{text-100}};
+}
+
+#ToolbarSeparator {
+    background-color: {{border-100}};
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.Icon {
+    font-family: "{{font-icon}}";
+}
+
+/* ============ ConstDrawingList ============ */
+.DrawingItemWidget {
+    background-color: {{bg-200}};
+    border-radius: 8px;
+    border: 1px solid {{border-100}};
+}
+
+.DrawingItemWidget:hover {
+    background-color: {{bg-300}};
+    border: 1px solid {{primary-100}};
+}
+
+.DrawingItemStatus {
+    border-radius: 11px;
+    font-weight: bold;
+    font-size: 8pt;
+    background-color: {{bg-300}};
+    color: {{text-300}};
+}
+
+.DrawingItemStatus[status="completed"] {
+    background-color: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+}
+
+.DrawingItemStatus[status="pending"] {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.DrawingItemStatus[status="in-progress"] {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: #3b82f6;
+}
+
+.DrawingItemStatus[status="file-not-found"] {
+    background-color: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
 }
 
 /* ============ Plus Dashboard Page ============ */
-.PlusDashboardPage, QWidget[class="PlusDashboardPage"] {
-    background-color: {{bg-100}};
-    border-top: none;
-    border-bottom: none;
-    border-left: 1px solid {{border-100}};
-    border-right: 1px solid {{border-100}};
-}
-
-.DashboardHeader {
-    background-color: {{bg-100}};
-    border-bottom: 1px solid {{border-100}};
-}
-
-.DashboardTitleIcon {
-    color: {{primary-100}}; 
-    font-family: "{{font-icon}}" !important; 
-    font-size: 24px; 
-    background: transparent;
-}
-
-.DashboardTitleLabel {
-    color: {{text-200}}; 
-    font-size: 20px; 
-    font-weight: bold;
-    background: transparent;
-}
 
 .DashboardDateButton {
     background-color: {{bg-200}};
@@ -1470,7 +1679,7 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
     padding: 8px 16px;
     color: {{text-200}};
     font-weight: bold;
-    font-size: 12px;
+    font-size: 10pt;
 }
 .DashboardDateButton:hover {
     border: 1px solid {{primary-100}};
@@ -1478,7 +1687,7 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
 
 /* Dashboard Metric Cards */
 .DashboardCard {
-    background-color: {{bg-200}};
+    background-color: {{bg-100}};
     border: 1px solid {{border-100}};
     border-radius: 8px;
 }
@@ -1489,47 +1698,41 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
 .DashboardMetricTitle {
     color: {{text-100}}; 
     font-weight: bold; 
-    font-size: 11px;
+    font-size: 9pt;
     background: transparent;
+}
+.DashboardThumbnailCard {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: none;
+    border-radius: 10px;
+}
+.DashboardThumbnailImage {
+    background-color: #ffffff;
+    border-radius: 10px;
 }
 .DashboardMetricValue {
     color: {{text-200}}; 
     font-weight: bold; 
-    font-size: 28px;
+    font-size: 24pt;
     background: transparent;
 }
 
-/* Projects Overview ScrollBar */
-.DashboardScrollArea, .ProjectConfigPage QScrollArea {
-    background-color: transparent; 
-    border: none;
-}
-#ProjectConfigScrollArea,
-#ProjectConfigScrollViewport,
-#ProjectConfigScrollContent {
-    background-color: transparent;
-    border: none;
-}
-#DashboardMainScrollViewport,
-#DashboardProjectsScrollViewport,
-#DashboardContentWidget,
-#DashboardProjectsContainer {
-    background-color: transparent;
-    border: none;
-}
-.ProjectConfigPage QScrollArea QScrollBar::add-line:vertical, .ProjectConfigPage QScrollArea QScrollBar::sub-line:vertical {
-    height: 0px;
-}
+
 
 /* Chart Legends & Small Labels */
-.DashboardLegendDot { font-size: 12px; background: transparent; }
-.DashboardLegendLabel { color: {{text-200}}; font-size: 12px; font-weight: bold; background: transparent; }
-.DashboardSubLabel { color: {{text-100}}; font-size: 10px; font-weight: bold; text-transform: uppercase; background: transparent; }
+.DashboardLegendDot { font-size: 10pt; background: transparent; }
+.DashboardLegendDot[legendTone="last-year"] { color: {{border-100}}; }
+.DashboardLegendDot[legendTone="this-year"] { color: {{primary-100}}; }
+.DashboardLegendDot[legendTone="nde-pending"] { color: {{border-100}}; }
+.DashboardLegendDot[legendTone="nde-cleared"] { color: #10B981; }
+.DashboardLegendDot[legendTone="nde-repair"] { color: #F43F5E; }
+.DashboardLegendLabel { color: {{text-200}}; font-size: 10pt; font-weight: bold; background: transparent; }
+.DashboardSubLabel { color: {{text-100}}; font-size: 8pt; font-weight: bold; text-transform: uppercase; background: transparent; }
 
 /* Status Badges */
 .DashboardProjectBadge {
     font-weight: bold;
-    font-size: 9px;
+    font-size: 7pt;
     padding: 2px 6px;
     border-radius: 4px;
 }
@@ -1546,9 +1749,9 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
     border-left-color: #EAB308;
     background-color: rgba(234, 179, 8, 0.12);
 }
-.UrgentAlertTitle { color: #F43F5E; font-weight: bold; font-size: 12px; background: transparent; border: none; }
+.UrgentAlertTitle { color: #F43F5E; font-weight: bold; font-size: 10pt; background: transparent; border: none; }
 .UrgentAlertFrame[tone="yellow"] .UrgentAlertTitle { color: #EAB308; }
-.UrgentAlertSubtitle { color: {{text-100}}; font-size: 10px; background: transparent; border: none; }
+.UrgentAlertSubtitle { color: {{text-100}}; font-size: 8pt; background: transparent; border: none; }
 
 /* Progress Bars */
 .DashboardProgressBar {
@@ -1560,6 +1763,13 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
     background-color: {{primary-100}};
     border-radius: 2px;
 }
+
+.DashboardDrawingsGallery {
+    background-color: {{bg-300}}; 
+    border: none; 
+    color: {{text-200}}; 
+}
+
 
 /* Tables */
 .DashboardTable {
@@ -1581,44 +1791,6 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
     padding: 8px;
 }
 
-.DashboardTableBtnPrimary {
-    background-color: {{primary-100}}; 
-    color: white; 
-    border: none; 
-    border-radius: 4px; 
-    padding: 6px 12px; 
-    font-weight: bold; 
-    font-size: 10px;
-}
-.DashboardTableBtnPrimary:hover {
-    background-color: #38bdf8;
-}
-
-.DashboardTableBtnSecondary {
-    background-color: rgba(148, 163, 184, 0.2); 
-    color: {{text-200}}; 
-    border: none; 
-    border-radius: 4px; 
-    padding: 6px 12px; 
-    font-weight: bold; 
-    font-size: 10px;
-}
-.DashboardTableBtnSecondary:hover {
-    background-color: rgba(148, 163, 184, 0.4);
-}
-
-.DashboardTableBtnDanger {
-    background-color: #F43F5E; 
-    color: white; 
-    border: none; 
-    border-radius: 4px; 
-    padding: 6px 12px; 
-    font-weight: bold; 
-    font-size: 10px;
-}
-.DashboardTableBtnDanger:hover {
-    background-color: #f43f5e;
-}
 
 /* ============ Empty State Overlay ============ */
 #EmptyStateOverlay {
@@ -1650,7 +1822,7 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
 
 #EmptyStateIcon {
     font-family: "{{font-icon}}" !important;
-    font-size: 64px;
+    font-size: 62pt;
     line-height: 1;
     color: #4A4D54;
     background: transparent;
@@ -1658,7 +1830,7 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
 }
 
 #EmptyTitle {
-    font-size: 18px;
+    font-size: 16pt;
     font-weight: bold;
     color: #E1E2E5;
     background: transparent;
@@ -1667,7 +1839,7 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
 }
 
 #EmptyDesc {
-    font-size: 13px;
+    font-size: 11pt;
     color: #8B909A;
     background: transparent;
     line-height: 150%;
@@ -1680,7 +1852,7 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
     border: none;
     border-radius: 6px;
     padding: 10px 24px;
-    font-size: 13px;
+    font-size: 11pt;
     font-weight: bold;
     min-width: 180px;
     min-height: 40px;
@@ -1696,7 +1868,7 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
     border: 1px solid {{border-100}};
     border-radius: 6px;
     padding: 10px 24px;
-    font-size: 13px;
+    font-size: 11pt;
     min-width: 160px;
     min-height: 40px;
     margin-top: 8px;
@@ -1712,14 +1884,14 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
 }
 
 #ExplorerEmptyStateTitle {
-    font-size: 13px;
+    font-size: 11pt;
     font-weight: bold;
     color: {{text-200}};
     background: transparent;
 }
 
 #ExplorerEmptyStateDesc {
-    font-size: 11px;
+    font-size: 9pt;
     color: {{text-100}};
     background: transparent;
 }
@@ -1730,7 +1902,7 @@ QDockWidget#WeldingDock > #integratedWeldingProcess {
     border: 1px solid rgba({{primary-100-rgb}}, 0.3);
     border-radius: 5px;
     padding: 6px 16px;
-    font-size: 12px;
+    font-size: 10pt;
     font-weight: bold;
     min-height: 32px;
 }
@@ -1779,9 +1951,6 @@ QWidget[class="PlusDashboardPage"], QWidget[class="ProjectConfigPage"] {
     border-bottom: 1px solid {{border-100}};
 }
 
-.ConfigHeader {
-}
-
 .ConfigSection {
     background-color: {{bg-100}};
     border: 1px solid {{border-100}};
@@ -1804,13 +1973,6 @@ QWidget[class="PlusDashboardPage"], QWidget[class="ProjectConfigPage"] {
     background: transparent;
 }
 
-.ConfigBreadcrumbLabel {
-    color: {{text-100}};
-    font-size: 10pt;
-    font-weight: bold;
-    background: transparent;
-}
-
 .ConfigStandardSpec {
     color: {{text-100}};
     font-size: 10pt;
@@ -1820,16 +1982,6 @@ QWidget[class="PlusDashboardPage"], QWidget[class="ProjectConfigPage"] {
     border-bottom: 1px solid {{border-100}};
 }
 
-.ConfigBreadcrumbValue {
-    color: {{text-200}};
-    font-size: 12pt;
-    font-weight: bold;
-    background: transparent;
-}
-
-.ConfigDivider {
-    background-color: {{border-100}};
-}
 
 .ConfigDimSelectorContainer {
     background-color: {{bg-100}};
@@ -1848,18 +2000,11 @@ QWidget[class="PlusDashboardPage"], QWidget[class="ProjectConfigPage"] {
     background-color: {{primary-100}};
     color: white;
 }
+
 .ConfigDimButton:hover:!checked {
     background-color: rgba(148, 163, 184, 0.1);
 }
 
-.ConfigActionSave {
-    background-color: {{accent-100}};
-    border: none;
-    border-radius: 4px;
-}
-.ConfigActionSave:hover {
-    opacity: 0.8;
-}
 
 .ConfigActionReset {
     background-color: #222;
@@ -1874,12 +2019,18 @@ QWidget[class="PlusDashboardPage"], QWidget[class="ProjectConfigPage"] {
     border-radius: 4px;
     color: {{text-200}};
     font-family: '{{font-monospace}}';
-    background-color: {{bg-100}};
+    background-color: transparent;
     padding: 4px;
 }
 
+.ColorButtonFace {
+    background-color: qproperty-face_color;
+    border: none;
+    border-radius: 3px;
+}
+
 .ConfigHexLabel {
-    color: #666;
+    color: {{text-100}};
     font-size: 9pt;
     background: transparent;
 }
@@ -1893,7 +2044,7 @@ QWidget[class="PlusDashboardPage"], QWidget[class="ProjectConfigPage"] {
 .ConfigInfoIcon {
     color: {{primary-100}};
     font-family: "{{font-icon}}" !important;
-    font-size: 24px;
+    font-size: 22pt;
     background: transparent;
     border: none;
 }
@@ -1901,11 +2052,11 @@ QWidget[class="PlusDashboardPage"], QWidget[class="ProjectConfigPage"] {
 .ConfigInfoText {
     background-color: transparent;
     color: {{text-100}};
-    font-size: 11px;
+    font-size: 9pt;
     border: none;
 }
 
-.ConfigSpecialItemFrame {
+.ConfigColorItemFrame {
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
@@ -2125,7 +2276,7 @@ QWidget[class="PlusDashboardPage"], QWidget[class="ProjectConfigPage"] {
     background-color: {{bg-200}}; 
     color: {{text-100}}; 
     font-weight: 600; 
-    font-size: 13px; 
+    font-size: 11pt; 
     border: 1px solid {{border-100}}; 
     border-radius: 4px; 
     padding: 8px;
@@ -2168,7 +2319,7 @@ QWidget[class="PlusDashboardPage"], QWidget[class="ProjectConfigPage"] {
 
 .ITPPanelTableHeaderLabel {
     font-weight: bold; 
-    font-size: 13px; 
+    font-size: 11pt; 
     color: {{text-100}}; 
     text-transform: uppercase; 
     border: none;
@@ -2258,7 +2409,7 @@ QFrame#ITPRow[selected="true"],
 
 .ITPPanelScrollArea {
     background-color: transparent; 
-    font-size: 12px;
+    font-size: 10pt;
     border: none;
 }
 
@@ -2270,11 +2421,16 @@ QFrame#ITPRow[selected="true"],
 QWidget#ITPPanelScrollContent,
 .ITPPanelScrollContent {
     background-color: transparent; 
-    font-size: 12px;
+    font-size: 10pt;
     border: none;
 }
 
 /* --- PlusColorPicker --- */
+
+.ColorPickerElement {
+    background: transparent;
+    color: #FFFFFF;
+}
 
 .ColorPickerFrame {
     background-color: #2C2C2E;
@@ -2285,14 +2441,14 @@ QWidget#ITPPanelScrollContent,
 
 .ColorPickerHeaderIcon {
     color: #FFFFFF;
-    font-size: 16px;
+    font-size: 14pt;
     background: transparent;
     border: none;
 }
 
 .ColorPickerTitle {
     font-weight: bold;
-    font-size: 15px;
+    font-size: 13pt;
     color: #FFFFFF;
     border: none;
     background: transparent;
@@ -2303,7 +2459,7 @@ QWidget#ITPPanelScrollContent,
     color: #FFFFFF;
     border: none;
     border-radius: 12px;
-    font-size: 12px;
+    font-size: 10pt;
     font-weight: bold;
 }
 
@@ -2318,6 +2474,14 @@ QWidget#ITPPanelScrollContent,
 }
 
 .ColorSwatchTile {
+    background-color: transparent;
+    qproperty-swatch_color: #000000;
+    border: none;
+}
+
+.ColorSwatch {
+    background-color: transparent;
+    qproperty-swatch_color: #000000;
     border: none;
 }
 
@@ -2343,9 +2507,20 @@ QWidget#ITPPanelScrollContent,
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
+.CircularColorIndicator {
+    background-color: transparent;
+    border-radius: 15px;
+    border: 1px solid {{border-100}};
+}
+
 .ColorPreview {
+    background-color: qproperty-face_color;
     border: none;
     border-radius: 8px;
+}
+
+.CircularColorIndicator {
+    background-color: qproperty-face_color;
 }
 
 /* --- LayerListPanel --- */
@@ -2621,7 +2796,7 @@ QFrame#LayerItem[selected="true"],
 
 .DrawingInfoIcon {
     font-family: "{{font-icon}}" !important;
-    font-size: 20px;
+    font-size: 18pt;
     color: {{primary-100}};
     background-color: transparent;
 }
@@ -2645,7 +2820,7 @@ QFrame#LayerItem[selected="true"],
 
 .DrawingInfoInputLabel {
     font-family: "{{font-sans-bold}}";
-    font-size: 10px;
+    font-size: 8pt;
     font-weight: bold;
     color: {{text-200}};
     text-transform: uppercase;
@@ -2661,7 +2836,7 @@ QFrame#LayerItem[selected="true"],
     border: 1px solid rgba(51, 119, 255, 0.2); /* 20% primary-100 */
     border-radius: 6px;
     height: 36px;
-    font-size: 13px;
+    font-size: 11pt;
 }
 
 .DrawingInfoToggleBtn:hover {
@@ -2674,7 +2849,7 @@ QFrame#LayerItem[selected="true"],
 
 .DrawingInfoToggleText {
     font-family: "{{font-sans-bold}}";
-    font-size: 15px;
+    font-size: 13pt;
     font-weight: bold;
     color: {{text-300}};
     background: transparent;
@@ -2683,14 +2858,14 @@ QFrame#LayerItem[selected="true"],
 
 .DrawingInfoToggleIcon {
     font-family: "{{font-icon}}" !important;
-    font-size: 20px;
+    font-size: 18pt;
     color: {{text-300}};
     background: transparent;
 }
 
 .DrawingInfoSectionNum {
     font-family: "{{font-sans-bold}}";
-    font-size: 12px;
+    font-size: 10pt;
     font-weight: 900;
     color: rgba(51, 119, 255, 0.6); /* 60% primary-100 */
     background: transparent;
@@ -2698,7 +2873,7 @@ QFrame#LayerItem[selected="true"],
 
 .DrawingInfoSectionTitle {
     font-family: "{{font-sans-bold}}";
-    font-size: 12px;
+    font-size: 10pt;
     font-weight: bold;
     color: {{text-200}};
     text-transform: uppercase;
@@ -2711,7 +2886,7 @@ QFrame#LayerItem[selected="true"],
 
 .DrawingInfoSwitchLabel {
     color: rgba(255, 255, 255, 0.5);
-    font-size: 11px;
+    font-size: 9pt;
     background: transparent;
 }
 
@@ -2729,7 +2904,7 @@ QFrame#LayerItem[selected="true"],
 
 .WeldLogTitle {
     color: {{text-200}};
-    font-size: 20px;
+    font-size: 18pt;
     font-weight: 700;
 }
 
@@ -2787,7 +2962,7 @@ QProgressBar#IntegratedWeldLogExportProgress::chunk {
     border: none; 
     background-color: transparent;
     color: {{text-100}};
-    font-size: 11px;
+    font-size: 9pt;
 }
 
 #mainTable {
@@ -2809,7 +2984,7 @@ QLabel[type="group"], QLabel[type="detail"], ClickableHeaderLabel[type="detail"]
     background-color: {{bg-200}};
     color: #FF9D56; /* text-orange fallback */
     font-weight: 700;
-    font-size: 11px;
+    font-size: 9pt;
     border: none;
     border-right: 1px solid {{border-100}};
     padding: 0px;
@@ -2831,6 +3006,11 @@ QLabel[type="detail"], ClickableHeaderLabel[type="detail"] {
     border: 1px solid {{border-100}};
 }
 
+.WeldJointEditorContainer[docked="true"] {
+    border-radius: 0px;
+    border: none;
+}
+
 .WeldJointEditorHeader {
     background-color: {{bg-100}};
     border-bottom: 1px solid {{border-100}};
@@ -2838,22 +3018,28 @@ QLabel[type="detail"], ClickableHeaderLabel[type="detail"] {
 
 .WeldJointEditorTitle {
     color: {{text-200}};
-    font-size: 14px;
+    font-size: 12pt;
     font-weight: bold;
     border: none;
 }
 
 .WeldJointEditorScrollArea {
-    background: transparent;
+    background-color: {{bg-300}};
+    background: {{bg-300}};
     border: none;
+}
+
+#WeldJointEditorContent {
+    background-color: {{bg-300}};
+    background: {{bg-300}};
 }
 
 .WeldJointEditorSectionTitle {
     color: {{text-300}};
-    background: rgba(19, 127, 236, 0.08);
+    background: {{bg-300}};
     font-weight: bold;
     padding: 10px 14px;
-    font-size: 14px;
+    font-size: 12pt;
     border-left: 4px solid {{primary-100}};
     border-radius: 2px;
     margin-top: 12px;
@@ -2861,52 +3047,52 @@ QLabel[type="detail"], ClickableHeaderLabel[type="detail"] {
 }
 
 .WeldJointEditorRowLabel {
-    color: #ffffff;
+    color: {{text-100}};
     font-weight: bold;
-    font-size: 11px;
+    font-size: 9pt;
     border: none;
 }
 
 .WeldJointEditorValueLabel {
-    color: #ffffff;
+    color: {{text-200}};
     font-style: italic;
-    font-size: 12px;
+    font-size: 10pt;
     border: none;
     font-weight: normal;
 }
 
 .WeldJointEditorInput {
-    background: rgba(148, 163, 184, 0.1);
-    font-size: 12px;
-    border: 1px solid rgba(148, 163, 184, 0.2);
+    background: {{bg-300}};
+    font-size: 10pt;
+    border: 1px solid {{border-100}};
     border-radius: 6px;
     padding: 6px 6px;
-    color: #ffffff;
+    color: {{text-200}};
     min-width: 0px;
 }
 .WeldJointEditorInput:focus {
-    border: 1px solid {{primary-100|#137fec}};
-    background: rgba(19, 127, 236, 0.05);
+    border: 1px solid {{accent-100}};
+    background: {{bg-300}};
 }
 .WeldJointEditorInput:hover {
-    border: 1px solid rgba(148, 163, 184, 0.4);
+    border: 1px solid {{accent-100}};
 }
 
 .WeldJointEditorReadOnlyInput {
-    background: rgba(148, 163, 184, 0.05);
-    color: #94a3b8;
+    background: {{bg-100}};
+    color: {{text-100}};
 }
 
 .WeldJointEditorCombo {
-    background: rgba(148, 163, 184, 0.1);
-    color: #ffffff;
-    border: 1px solid rgba(148, 163, 184, 0.2);
+    background: {{bg-300}};
+    color: {{text-200}};
+    border: 1px solid {{border-100}};
     border-radius: 6px;
     padding: 6px 10px;
-    font-size: 12px;
+    font-size: 10pt;
 }
 .WeldJointEditorCombo:hover {
-    border: 1px solid rgba(148, 163, 184, 0.4);
+    border: 1px solid {{bg-200}};
 }
 .WeldJointEditorCombo::drop-down {
     border: none;
@@ -2916,11 +3102,16 @@ QLabel[type="detail"], ClickableHeaderLabel[type="detail"] {
     image: none;
 }
 .WeldJointEditorCombo QAbstractItemView {
-    background-color: #1e293b;
-    color: #ffffff;
-    selection-background-color: {{primary-100|#137fec}};
+    background-color: {{bg-200}};
+    color: {{text-200}};
+    selection-background-color: {{primary-100}};
     outline: none;
-    border: 1px solid #334155;
+    border: 1px solid {{border-100}};
+}
+
+.CalendarIconLabel {
+    font-family: "{{font-icon}}";
+    color: {{text-200}};
 }
 
 .WeldJointEditorFooter {
@@ -2929,8 +3120,8 @@ QLabel[type="detail"], ClickableHeaderLabel[type="detail"] {
 }
 
 .WeldJointEditorHint {
-    color: {{text-300|#FF9D56}};
-    font-size: 13px;
+    color: {{primary-100}};
+    font-size: 11pt;
     border: none;
     background: transparent;
 }
@@ -2940,7 +3131,7 @@ QLabel[type="detail"], ClickableHeaderLabel[type="detail"] {
     color: {{text-200}};
     border: 1px solid {{border-100}};
     border-radius: 8px;
-    font-size: 12px;
+    font-size: 10pt;
     font-weight: bold;
 }
 .WeldJointEditorCancelBtn:hover {
@@ -2948,15 +3139,15 @@ QLabel[type="detail"], ClickableHeaderLabel[type="detail"] {
 }
 
 .WeldJointEditorSaveBtn {
-    background: {{primary-100|#137fec}};
+    background: {{primary-100}};
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 12px;
+    font-size: 10pt;
     font-weight: bold;
 }
 .WeldJointEditorSaveBtn:hover {
-    background: {{primary-200|#0f62b8}};
+    background: {{primary-200}};
 }
 
 
@@ -2989,29 +3180,14 @@ QLabel[type="detail"], ClickableHeaderLabel[type="detail"] {
 }
 
 
-.LoginFieldLabel {
-    color: {{text-200}};
-    font-size: 12px;
-    font-weight: 600;
-    background: transparent;
-    padding-right: 2px;
-}
 .LoginDialogRight {
-    background-color: rgba({{bg-100-rgb}}, 0.61);
+    background-color: {{bg-100_op80}};
     border-radius: 0px;
-}
-
-.LoginDialogTitle {
-    color: {{text-100}};
-    font-weight: bold;
-    font-size: 28px;
-    border: none;
-    background: transparent;
 }
 
 .LoginDialogDesc {
     color: {{text-200}};
-    font-size: 14px;
+    font-size: 10pt;
     border: none;
     background: transparent;
 }
@@ -3022,7 +3198,7 @@ QLabel[type="detail"], ClickableHeaderLabel[type="detail"] {
     border-radius: 4px;
     padding: 6px 6px;
     color: {{text-100}};
-    font-size: 13px;
+    font-size: 10pt;
     selection-background-color: {{primary-100}};
 }
 
@@ -3032,81 +3208,28 @@ QLabel[type="detail"], ClickableHeaderLabel[type="detail"] {
     color: white;
 }
 
-.DialogBtnPrimary {
-    background-color: {{primary-100}};
-    color: white;
-    border: none;
-    border-radius: 0px;
-    font-weight: bold;
-    font-size: 14px;
-    min-height: 40px;
-    padding: 0 16px;
-}
-
-.DialogBtnPrimary:hover {
-    background-color: {{primary-200}};
-}
-
-.DialogBtnPrimary:pressed {
-    background-color: {{primary-300}};
-    padding: 0 16px;
-    margin: 0;
-}
-
-.DialogBtnSecondary {
-    background-color: transparent;
-    color: {{text-100}};
-    border: 1px solid {{primary-100}};
-    border-radius: 0px;
-    font-weight: bold;
-    font-size: 14px;
-    min-height: 40px;
-    padding: 0 16px;
-}
-
-.DialogBtnSecondary:hover {
-    background-color: {{bg-200}};
-}
-
-.DialogBtnSecondary:pressed {
-    padding: 0 16px;
-    margin: 0;
-}
-
-.DialogBtnClose {
-    background-color: {{bg-200}};
-    color: {{text-100}};
+.DialogLineEditInner {
+    background-color: rgba(15, 35, 35, 0.5);
     border: 1px solid {{border-100}};
-    border-radius: 0px;
-    font-size: 14px;
-    padding: 0;
-    font-weight: bold;
-}
-
-QPushButton#btnCloseX {
-    min-width: 32px;
-    max-width: 32px;
-    min-height: 32px;
-    max-height: 32px;
-    padding: 0;
-    margin: 0;
-    border-radius: 0px;
-}
-
-.DialogBtnClose:hover {
-    background-color: #ef4444;
+    border-radius: 8px;
     color: {{text-200}};
-    border: 1px solid #ef4444;
+}
+.DialogLineEditInner[state="focus"] {
+    border: 2px solid {{primary-100}};
+    background-color: rgba(15, 35, 35, 0.8);
 }
 
-.DialogBtnClose:pressed {
+.DialogLineEditIcon {
+    background: transparent;
     color: {{text-200}};
-    padding: 2px 2px;
-    margin: 0;
+    font-family: "{{font-icon}}" !important;
+    font-size: 16pt;
+    border: none;
 }
+
 
 .LoginDialogStatus {
-    font-size: 11px;
+    font-size: 9pt;
     background: transparent;
 }
 
@@ -3136,7 +3259,7 @@ QPushButton#btnCloseX {
 
 .DialogCheckbox {
     color: {{text-100}};
-    font-size: 13px;
+    font-size: 11pt;
     padding-left: 2px;
 }
 
@@ -3163,7 +3286,7 @@ QPushButton#btnCloseX {
 
 .PlusDialogTitle {
     color: {{text-100}};
-    font-size: 14px;
+    font-size: 12pt;
     font-weight: bold;
     border: none;
     background: transparent;
@@ -3176,14 +3299,14 @@ QPushButton#btnCloseX {
 
 .PlusDialogText {
     color: {{text-200}};
-    font-size: 14px;
+    font-size: 12pt;
     border: none;
     background: transparent;
 }
 
 .PlusDialogIcon {
     font-family: "{{font-icon}}" !important;
-    font-size: 36px;
+    font-size: 34pt;
     border: none;
     background: transparent;
 }
@@ -3207,7 +3330,7 @@ QPushButton#btnCloseX {
     border: 1px solid {{border-100}};
     border-radius: 4px;
     padding: 8px;
-    font-size: 14px;
+    font-size: 12pt;
 }
 
 .PlusDialogInput:focus {
@@ -3245,7 +3368,7 @@ QSpinBox.PlusDialogInput::down-button {
 
 .PlusSnakeBarCloseIcon {
     font-family: "{{font-icon}}" !important;
-    font-size: 18px;
+    font-size: 16pt;
     color: {{text-200}};
     background: transparent;
     border: none;
@@ -3535,14 +3658,14 @@ QComboBox.ToolbarWeldNoEditPrefix QAbstractItemView {
 
 .ShapeToolButtonIcon {
     font-family: "{{font-icon}}";
-    font-size: 20px;
+    font-size: 18pt;
     color: {{text-100}};
     background-color: transparent;
 }
 
 .ShapeToolButtonLabel {
     font-family: "{{font-sans}}";
-    font-size: 12px !important;
+    font-size: 10pt !important;
     color: {{text-200}};
     background-color: transparent;
 }
@@ -3564,7 +3687,7 @@ QComboBox.ToolbarWeldNoEditPrefix QAbstractItemView {
 
 .CanvasScaleLabel {
     color: white;
-    font-size: 8px;
+    font-size: 6pt;
     font-weight: bold;
     background-color: transparent;
 }
@@ -3572,12 +3695,12 @@ QComboBox.ToolbarWeldNoEditPrefix QAbstractItemView {
 /* DatePicker */
 .DatePickerButton {
     background-color: transparent;
-    color: #ffffff;
+    color: {{text-200}};
     padding: 6px 10px;
-    border: 1px solid rgba(148, 163, 184, 0.3);
+    border: 1px solid {{border-100}};
     border-radius: 6px;
     font-family: "{{font-sans}}";
-    font-size: 12px;
+    font-size: 10pt;
     text-align: left;
 }
 
@@ -3592,13 +3715,13 @@ QComboBox.ToolbarWeldNoEditPrefix QAbstractItemView {
 }
 
 .DatePickerButton:hover {
-    border: 1px solid rgba(148, 163, 184, 0.5);
-    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid {{border-100}};
+    background-color: {{bg-300}};
 }
 
 .DatePickerButton:pressed {
     border: 1px solid {{accent-100}};
-    background-color: rgba(19, 127, 236, 0.1);
+    background-color: {{bg-200}};
 }
 
 .CalendarPopup {
@@ -3655,7 +3778,7 @@ QComboBox.ToolbarWeldNoEditPrefix QAbstractItemView {
 
 .CalendarHelpIcon {
     font-family: "{{font-icon}}" !important;
-    font-size: 18px;
+    font-size: 16pt;
     color: {{text-200}};
     border: none;
     background-color: transparent;
@@ -3717,7 +3840,7 @@ QCalendarWidget.CustomCalendar QPushButton {
 /* Process Widgets (BackDropProgress, WaitingProcess) */
 .ProcessBrand {
     font-family: "{{font-sans}}";
-    font-size: 12px;
+    font-size: 10pt;
     font-weight: normal;
     letter-spacing: 5px;
     color: {{text-100}};
@@ -3727,7 +3850,7 @@ QCalendarWidget.CustomCalendar QPushButton {
 
 .ProcessTitle {
     font-family: "{{font-sans}}";
-    font-size: 24px;
+    font-size: 22pt;
     font-weight: bold;
     letter-spacing: 2px;
     color: #ffffff;
@@ -3736,7 +3859,7 @@ QCalendarWidget.CustomCalendar QPushButton {
 
 .ProcessStatusText {
     font-family: "{{font-sans}}";
-    font-size: 40px;
+    font-size: 38pt;
     font-weight: 900;
     color: #ffffff;
     background: transparent;
@@ -3744,12 +3867,12 @@ QCalendarWidget.CustomCalendar QPushButton {
 
 .ProcessStatusText[state="error"] {
     color: #ff5252;
-    font-size: 28px;
+    font-size: 26pt;
 }
 
 .ProcessSubText {
     font-family: "{{font-sans}}";
-    font-size: 10px;
+    font-size: 8pt;
     letter-spacing: 2px;
     color: #00e5ff;
     background: transparent;
@@ -3778,7 +3901,7 @@ QCalendarWidget.CustomCalendar QPushButton {
 
 .ProcessLogHeaderTitle {
     font-family: "{{font-gothic}}";
-    font-size: 11px;
+    font-size: 9pt;
     color: #64748b;
     font-weight: bold;
     background: transparent;
@@ -3786,7 +3909,7 @@ QCalendarWidget.CustomCalendar QPushButton {
 
 .ProcessLogHeaderStatus {
     font-family: "{{font-gothic}}";
-    font-size: 11px;
+    font-size: 9pt;
     color: #00e5ff;
     font-weight: bold;
     background: transparent;
@@ -3828,7 +3951,7 @@ QCalendarWidget.CustomCalendar QPushButton {
 }
 
 .ProcessLogRowText[state="pulse"] {
-    font-size: 11px;
+    font-size: 9pt;
     color: #475569;
 }
 
@@ -3969,7 +4092,7 @@ QTabWidget#DrawingTabWidget QTabBar::close-button {
     padding: 0px;
     margin: 0px;
     font-family: "{{font-icon}}" !important;
-    font-size: 11px;
+    font-size: 9pt;
 }
 
 .TabCloseButton:hover {
@@ -4008,7 +4131,7 @@ QTabWidget#DrawingTabWidget QTabBar::close-button {
     padding: 0px 14px;
     text-align: left;
     color: {{text-200}};
-    font-size: 12px;
+    font-size: 10pt;
     min-height: 36px;
     max-height: 36px;
 }
@@ -4044,7 +4167,6 @@ QGraphicsView {
     outline: none;
 }
 
-
 /* ============ ShapeSelectButton ============ */
 .ShapeSelectButtonContainer {
     background-color: transparent;
@@ -4058,7 +4180,7 @@ QGraphicsView {
 }
 
 .ShapeSelectButtonIconArea:hover {
-    background-color: rgba(45, 45, 45, 178); /* Fallback for MOUSEOVER_OPACITY 0.7 */
+    background-color: {{bg-100_op55}}; /* Fallback for MOUSEOVER_OPACITY 0.7 */
 }
 
 /* Checked state */
@@ -4076,7 +4198,7 @@ QGraphicsView {
 }
 
 .ShapeSelectSeparatorLine {
-    background-color: {{gray-medium}};
+    background-color: {{border-200}};
     border: none;
 }
 
@@ -4203,14 +4325,14 @@ QFrame#StampMainContainer {
 
 .StampHeaderIcon {
     font-family: "{{font-icon}}" !important;
-    font-size: 20px;
+    font-size: 18pt;
     color: {{accent-100}};
     border: none;
 }
 
 .StampHeaderTitle {
     font-family: "{{font-sans-bold}}";
-    font-size: 12px;
+    font-size: 10pt;
     font-weight: bold;
     color: {{text-200}};
     letter-spacing: 1px;
@@ -4235,14 +4357,14 @@ QFrame#StampMainContainer {
 
 .StampActionIcon {
     font-family: "{{font-icon}}" !important;
-    font-size: 16px;
+    font-size: 14pt;
     color: white;
     border: none;
 }
 
 .StampActionLabel {
     font-family: "{{font-sans}}";
-    font-size: 11px;
+    font-size: 9pt;
     color: white;
     border: none;
 }
@@ -4258,7 +4380,7 @@ QFrame#StampMainContainer {
 
 .StampSectionTitle {
     font-family: "{{font-sans-bold}}";
-    font-size: 10px;
+    font-size: 8pt;
     font-weight: bold;
     color: {{text-100}};
     letter-spacing: 1.5px;
@@ -4285,14 +4407,14 @@ QFrame#StampMainContainer {
 
 .StampFooterTip {
     font-family: "{{font-sans}}";
-    font-size: 10px;
+    font-size: 8pt;
     color: {{text-100}};
     border: none;
 }
 
 .StampEmptyLabel {
     color: {{text-100}};
-    font-size: 11px;
+    font-size: 9pt;
 }
 
 /* ============ FloatingTextToolbar Figma Style ============ */
@@ -4312,7 +4434,7 @@ QFrame#StampMainContainer {
     color: {{text-200}};
     background-color: transparent;
     border: none;
-    font-size: 12px;
+    font-size: 10pt;
     font-weight: bold;
     letter-spacing: 0.5px;
 }
@@ -4320,7 +4442,7 @@ QFrame#StampMainContainer {
 .FloatingGrip {
     color: {{text-100}};
     background-color: transparent;
-    font-size: 24px;
+    font-size: 22pt;
     padding-left: 4px;
 }
 
@@ -4330,7 +4452,7 @@ QFrame#StampMainContainer {
     border-radius: 17px; /* For height 34px */
     padding: 1px 4px;
     color: {{text-200}};
-    font-size: 12px;
+    font-size: 10pt;
 }
 
 .FloatingCapsule QAbstractItemView {
@@ -4373,7 +4495,7 @@ QFrame#StampMainContainer {
     min-width: 24px;
     min-height: 24px;
     font-family: {{font-icon}};
-    font-size: 14px;
+    font-size: 12pt;
 }
 
 .SegmentedButton:hover {
@@ -4411,7 +4533,7 @@ QFrame#StampMainContainer {
     background-color: #2a2a2e;
     border-radius: 4px;
     color: {{accent-100}};
-    font-size: 12px;
+    font-size: 10pt;
     font-weight: bold;
     padding: 1px 2px;
     min-width: 32px;
@@ -4433,89 +4555,13 @@ QFrame#StampMainContainer {
     color: {{text-200}};
     background-color: transparent;
     border: none;
-    font-size: 12px;
+    font-size: 10pt;
     font-weight: 800;
     letter-spacing: 0.8px;
     text-transform: uppercase;
 }
 
 /* Modern Widgets Classes */
-.ModernLineEditInner {
-    background-color: rgba(15, 35, 35, 0.5);
-    border: 1px solid {{border-100}};
-    border-radius: 8px;
-    color: {{text-200}};
-}
-.ModernLineEditInner[state="focus"] {
-    border: 2px solid {{primary-100}};
-    background-color: rgba(15, 35, 35, 0.8);
-}
-
-.ModernLineEditIcon {
-    background: transparent;
-    color: {{text-200}};
-    font-family: "{{font-icon}}" !important;
-    font-size: 18px;
-    border: none;
-}
-
-.ModernLineEditBox {
-    background-color: transparent;
-    border: none;
-    color: {{text-200}};
-    selection-color: {{text-200}};
-    selection-background-color: {{primary-100}};
-    font-size: 14px;
-}
-.ModernLineEditBox::placeholder {
-    color: {{text-100}};
-}
-
-.ModernDateEdit {
-    background-color: rgba(15, 35, 35, 0.5);
-    border: 1px solid {{border-100}};
-    border-radius: 8px;
-    color: {{text-200}};
-    padding: 0 16px;
-    font-size: 14px;
-}
-.ModernDateEdit:focus {
-    border: 2px solid {{primary-100}};
-    background-color: rgba(15, 35, 35, 0.8);
-}
-.ModernDateEdit::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 30px;
-    border-left-width: 0px;
-    border-top-right-radius: 3px; 
-    border-bottom-right-radius: 3px;
-    background-image: none; 
-}
-
-.ModernTextEdit {
-    background-color: rgba(15, 35, 35, 0.5);
-    border: 1px solid {{border-100}};
-    border-radius: 8px;
-    color: {{text-200}};
-}
-.ModernTextEdit[state="focus"] {
-    border: 2px solid {{primary-100}};
-    background-color: rgba(15, 35, 35, 0.8);
-}
-
-.ModernTextEditor {
-    background-color: transparent;
-    border: none;
-    border-radius: 8px;
-    color: {{text-200}};
-    padding: 14px;
-    font-size: 14px;
-}
-.ModernTextEditor::placeholder {
-    color: {{text-100}};
-}
-
 .ModernDatePickerButton {
     background-color: rgba(15, 35, 35, 0.5);
     border: 1px solid {{border-100}};
@@ -4535,7 +4581,7 @@ QFrame#StampMainContainer {
     background: transparent;
     border: none;
     color: {{text-200}};
-    font-size: 14px;
+    font-size: 12pt;
     padding: 0;
 }
 
@@ -4544,62 +4590,103 @@ QFrame#StampMainContainer {
     border: none;
     color: {{text-100}};
     font-family: "{{font-icon}}" !important;
-    font-size: 16px;
+    font-size: 14pt;
 }
 
-.SaveButtonText {
-    font-weight: 900;
-    color: white;
-    font-size: 14px;
-    background: transparent;
-}
-
-/* ============ ProjectEditForm & Sub-widgets ============ */
-#ProjectEditFormContainer,
-.ProjectEditFormContainer {
-    background-color: {{bg-300}};
-    border: 1px solid {{border-100}};
-    border-radius: 12px;
-}
-
-QFrame#Header,
-.HeaderIconBox {
-    background-color: rgba(15, 35, 35, 0.3);
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-}
-
-.HeaderIconBox {
-    background-color: rgba(0, 224, 224, 0.2);
-    border-radius: 8px;
-}
-
-.HeaderTitle {
-    color: {{text-200}};
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.HeaderSubtitle {
+.DatePickerButton[iconMode="true"] {
+    font-family: "{{font-icon}}" !important;
+    font-size: 11pt;
+    min-width: 60px;
     color: {{text-100}};
-    font-size: 12px;
+    letter-spacing: 0px;
+    text-align: center;
+    padding: 0px 0px;
 }
 
-.HeaderCloseBtn {
+.DatePickerButton[iconMode="false"] {
+    font-family: "{{font-sans}}" !important;
+    font-size: 10pt !important;
+    color: {{text-200}};
+    letter-spacing: 0px;
+    text-align: left;
+    padding: 6px 10px;
+}
+
+.DatePickerButton[hasPrefixIcon="true"] {
+    text-align: left;
+    padding-left: 28px;
+}
+
+.DatePickerPrefixIcon {
     background: transparent;
     border: none;
     color: {{text-100}};
     font-family: "{{font-icon}}" !important;
-    font-size: 24px;
-}
-.HeaderCloseBtn:hover {
-    color: {{text-200}};
 }
 
-.HeaderLine, .FooterLine {
-    background-color: {{border-100}};
-    max-height: 1px;
+QLineEdit#WeldJointEditor_DateInput {
+    font-family: "{{font-sans}}" !important;
+    font-size: 9pt !important;
+    background-color: {{bg-200}};
+    border: 1px solid {{border-100}};
+    border-radius: 4px;
+    color: {{text-200}};
+    padding: 2px 6px;
 }
+
+QLabel#WeldJointEditor_CalendarIcon {
+    min-width: 24px;
+    max-width: 24px;
+    min-height: 24px;
+    max-height: 24px;
+    color: {{text-100}};
+    margin-bottom: 1px;
+    font-family: "{{font-icon}}" !important;
+    font-size: 11pt;
+    qproperty-alignment: AlignCenter;
+}
+
+QComboBox#WeldJointEditor_ComboBox QAbstractItemView {
+    background-color: {{bg-200}} !important;
+    color: {{text-200}};
+    border: 1px solid {{border-100}};
+    border-radius: 4px;
+    selection-background-color: {{bg-300}};
+    selection-color: {{primary-100}};
+}
+
+QPushButton#WeldJointEditor_DateButton {
+    background-color: {{bg-200}};
+    border: 1px solid {{border-100}};
+    border-radius: 4px;
+    color: {{text-200}};
+    padding: 2px 6px;
+    font-size: 10pt;
+    font-family: "{{font-sans}}";
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+QPushButton#WeldJointEditor_DateButton[iconMode="true"] {
+    font-family: "{{font-icon}}" !important;
+    font-size: 11pt;
+    min-width: 60px;
+    color: {{text-100}};
+    letter-spacing: 0px;
+    text-align: center;
+    padding: 0px;
+}
+
+QPushButton#WeldJointEditor_DateButton[iconMode="false"] {
+    font-family: "{{font-sans}}" !important;
+    font-size: 10pt !important;
+    color: {{text-200}};
+    letter-spacing: 0px;
+    text-align: left;
+    padding: 6px 10px;
+}
+
+/* ============ ProjectEditForm & Sub-widgets ============ */
 
 .InfoBox {
     background-color: rgba(0, 224, 224, 0.05);
@@ -4609,46 +4696,12 @@ QFrame#Header,
 
 .InfoText {
     color: {{text-100}};
-    font-size: 11px;
-}
-
-.ProjectEditFormFooter {
-    background-color: rgba(15, 35, 35, 0.3);
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-}
-
-QFrame#Footer,
-.SettingFormFooter {
-    background-color: rgba(15, 35, 35, 0.3);
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-}
-
-.CancelButton {
-    background-color: transparent;
-    border: 1px solid {{border-100}};
-    border-radius: 8px;
-    color: {{text-100}};
-    font-size: 14px;
-    font-weight: bold;
-}
-.CancelButton:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-.SaveButton {
-    background-color: {{primary-100}};
-    border: none;
-    border-radius: 8px;
-}
-.SaveButton:hover {
-    background-color: {{primary-200}};
+    font-size: 9pt;
 }
 
 .FieldLabel {
-    color: {{text-200}};
-    font-size: 12px;
+    color: {{text-100}};
+    font-size: 10pt;
     font-weight: bold;
     padding: 0px 0px 5px 0px;
     text-transform: uppercase;
@@ -4656,41 +4709,16 @@ QFrame#Footer,
 
 
 /* OrderEditForm Styles */
-.SettingFormContainer {
-    background-color: {{bg-300}};
-    border: 1px solid {{border-100}};
-    border-radius: 12px;
-}
-
-.SettingFormHeader {
-    border: none;
-    background-color: {{bg-200}};
-}
-
 .SettingFormIconBg {
     background-color: rgba(0, 224, 224, 0.2);
     border-radius: 8px;
 }
 
-.SettingFormTitle {
-    color: {{text-200}};
-    font-family: "{{font-sans}}";
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-}
-
-.SettingFormSubtitle {
-    color: {{text-100}};
-    font-family: "{{font-sans}}";
-    font-size: 12px;
-    border: none;
-}
 
 .SettingFormProjectText {
     color: {{text-300}};
     font-family: "{{font-sans}}";
-    font-size: 16px;
+    font-size: 14pt;
     font-weight: bold;
     border: none;
 }
@@ -4721,7 +4749,7 @@ QWidget#ContentWidget,
 .AccordionTitle {
     color: {{text-200}};
     font-family: "{{font-sans}}";
-    font-size: 16px;
+    font-size: 14pt;
     font-weight: bold;
     border: none;
 }
@@ -4729,7 +4757,7 @@ QWidget#ContentWidget,
 .AccordionArrow {
     color: {{text-100}};
     font-family: "{{font-icon}}" !important;
-    font-size: 24px;
+    font-size: 22pt;
     border: none;
 }
 
@@ -4745,24 +4773,17 @@ QWidget#ContentWidget,
 .SectionHeaderIcon {
     color: {{primary-100}};
     font-family: "{{font-icon}}" !important;
-    font-size: 16px;
+    font-size: 14pt;
     border: none;
 }
 
 .SectionHeaderTitle {
     color: {{text-100}};
     font-family: "{{font-sans}}";
-    font-size: 14px;
+    font-size: 12pt;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-
-.FieldLabel {
-    color: {{text-100}};
-    font-family: "{{font-sans}}";
-    font-size: 12px;
-    font-weight: 600;
 }
 
 .InfoBox {
@@ -4774,57 +4795,12 @@ QWidget#ContentWidget,
 .InfoBoxText {
     color: {{text-300}};
     font-family: "{{font-sans}}";
-    font-size: 12px;
+    font-size: 10pt;
 }
 
 .OrderFormFooter {
     border: none;
     background-color: {{bg-200}};
-}
-
-.OrderCancelButton {
-    background-color: transparent;
-    color: {{text-100}};
-    font-family: "{{font-sans}}";
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 8px;
-}
-
-.OrderCancelButton:hover {
-    background-color: rgba(17, 29, 33, 0.5);
-    color: {{text-200}};
-}
-
-.OrderSaveButton {
-    background-color: {{primary-100}};
-    border: none;
-    border-radius: 8px;
-}
-
-.OrderSaveButton:hover {
-    background-color: {{primary-200}};
-}
-
-.OrderSaveButton:pressed {
-    background-color: {{primary-300}};
-}
-
-.OrderSaveButtonText {
-    background-color: transparent;
-    color: white;
-    font-family: "{{font-sans}}";
-    font-size: 14px;
-    font-weight: bold;
-    border: none;
-}
-
-.OrderSaveButtonIcon {
-    background-color: transparent;
-    color: white;
-    font-family: "{{font-icon}}" !important;
-    font-size: 18px;
-    border: none;
 }
 
 /* ============ WelderListForm (용접사 현황 양식) ============ */
@@ -4841,12 +4817,21 @@ QWidget#ContentWidget,
     border-bottom-left-radius: 12px;
 }
 
+/* ── WelderListSidebarHeader: PageWidgetHeader 스타일로 실제 IsometricDrawingList Header와 동일 ── */
 #WelderListSidebarHeader {
+    background-color: {{bg-200}};
+    border-bottom: 1px solid {{border-100}};
+}
+
+#WelderListSearchWrap {
     background-color: {{bg-100}};
     border: none;
-    border-radius: 0px;
-    border-bottom: 1px solid {{border-100}}; 
-    border-top-left-radius: 12px;
+}
+
+#WelderListProfileCard {
+    background-color: {{bg-200}};
+    border-top: 1px solid {{border-100}};
+    border-bottom: 1px solid {{border-100}};
 }
 
 #WelderListSidebarFooter {
@@ -4857,28 +4842,91 @@ QWidget#ContentWidget,
     border-bottom-left-radius: 12px;
 }
 
+
 #WelderListMainArea {
     background-color: {{bg-100}};
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
 }
 
-/* Sidebar Search */
+#WelderListScroll,
+#WelderListScroll > QWidget,
+#WelderListScroll QWidget#qt_scrollarea_viewport,
+#WelderListScrollContent {
+    background-color: {{bg-100}};
+    border: none;
+}
+
+/* Sidebar Search – SearchInput 클래스 사용 (IsometricDrawingList 와 동일) */
 #WelderListSearchInput {
+    background: transparent;
+    border: none;
+    color: {{text-200}};
+    font-size: 10pt;
+    padding: 0px;
+}
+#WelderListSearchInput:focus {
+    border: none;
+    outline: none;
+}
+
+#WelderListSortMode {
     background-color: {{bg-200}};
     border: none;
     border-radius: 8px;
     color: {{text-300}};
     font-family: "{{font-sans}}";
-    font-size: 14px;
+    font-size: 10pt;
+    padding: 0 8px;
+    margin-left: 6px;
+    min-width: 86px;
 }
-#WelderListSearchInput:focus {
+
+#WelderListSortMode:hover {
+    background-color: {{bg-300}};
+}
+
+#WelderListSortMode:focus {
     border: 1px solid {{primary-100}};
+}
+
+#WelderListSortMode::drop-down {
+    border: none;
+    width: 18px;
+}
+
+#WelderListSortMode QAbstractItemView {
+    background-color: {{bg-200}};
+    color: {{text-200}};
+    border: 1px solid {{border-100}};
+    border-radius: 6px;
+    outline: none;
+    padding: 4px;
+    selection-background-color: {{primary-100}};
+    selection-color: white;
+}
+
+#WelderListSortMode QAbstractItemView::item {
+    background: transparent;
+    color: {{text-200}};
+    border-radius: 4px;
+    padding: 6px 8px;
+    min-height: 24px;
+}
+
+#WelderListSortMode QAbstractItemView::item:hover {
+    background-color: {{bg-300}};
+    color: {{text-300}};
+}
+
+#WelderListSortMode QAbstractItemView::item:selected {
+    background-color: {{primary-100}};
+    color: white;
 }
 
 #WelderListSearchIcon {
     font-family: "{{font-icon}}" !important;
-    font-size: 20px;
+    font-size: 18pt;
     color: {{text-100}};
     background: transparent;
     border: none;
@@ -4886,7 +4934,7 @@ QWidget#ContentWidget,
 
 #WelderListSidebarIcon {
     font-family: "{{font-icon}}" !important;
-    font-size: 24px;
+    font-size: 22pt;
     color: {{primary-100}};
     background: transparent;
     border: none;
@@ -4894,7 +4942,7 @@ QWidget#ContentWidget,
 
 #WelderListSidebarTitle {
     font-family: "{{font-sans}}";
-    font-size: 18px;
+    font-size: 16pt;
     font-weight: 700;
     color: {{text-100}};
     background: transparent;
@@ -4919,16 +4967,17 @@ WelderItemWidget[active="true"] {
 
 WelderItemWidget QLabel#WelderID {
     font-family: "{{font-sans}}";
-    font-size: 12px;
+    font-size: 9pt;
     font-weight: 500;
     color: {{text-100}};
     border: none;
     background: transparent;
+    opacity: 0.7;
 }
 
 WelderItemWidget QLabel#WelderName {
     font-family: "{{font-sans}}";
-    font-size: 16px;
+    font-size: 12pt;
     font-weight: 600;
     color: #E0E0E0;
     border: none;
@@ -4938,9 +4987,197 @@ WelderItemWidget[active="true"] QLabel#WelderName {
     color: {{text-300}};
 }
 
+WelderItemWidget QLabel#WelderMeta {
+    font-family: "{{font-sans}}";
+    font-size: 9pt;
+    font-weight: 500;
+    color: {{text-100}};
+    border: none;
+    background: transparent;
+}
+
+WelderItemWidget[active="true"] QLabel#WelderMeta {
+    color: {{text-300}};
+}
+
+WelderItemWidget[expiry_state="soon"] QLabel#WelderMeta {
+    color: #FB923C;
+}
+
+WelderItemWidget[expiry_state="expired"] QLabel#WelderMeta {
+    color: #EF4444;
+    font-weight: 700;
+}
+
+WelderItemWidget[expiry_state="expired"] {
+    border-left: 4px solid #EF4444;
+    background-color: rgba(239, 68, 68, 0.08);
+}
+
+WelderItemWidget[expiry_state="expired"][active="true"] {
+    background-color: rgba(239, 68, 68, 0.14);
+    border-left: 4px solid #EF4444;
+}
+
+/* 2행 날짜 정보 스타일 */
+WelderItemWidget QLabel#WelderBirthDate,
+WelderItemWidget QLabel#WelderExpiryDate {
+    font-family: "{{font-sans}}";
+    font-size: 8pt;
+    font-weight: 500;
+    color: {{text-100}};
+    border: none;
+    background: transparent;
+}
+
+WelderItemWidget[active="true"] QLabel#WelderBirthDate,
+WelderItemWidget[active="true"] QLabel#WelderExpiryDate {
+    color: {{text-100}};
+}
+
+WelderItemWidget QLabel#WelderExpiryDate {
+    color: {{accent-100}};
+}
+
+WelderItemWidget QLabel#WelderExpiryDate[expiry_state="soon"] {
+    color: #EF4444;
+    font-weight: 700;
+}
+
+WelderItemWidget QLabel#WelderExpiryDate[expiry_state="expired"] {
+    color: #EF4444;
+    font-weight: 700;
+}
+
+WelderItemWidget QLabel#WelderDateSep {
+    font-size: 8pt;
+    color: {{border-100}};
+    background: transparent;
+    border: none;
+}
+
+QFrame#WelderGroupHeader {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: none;
+    border-top: 1px solid {{border-100}};
+}
+
+QLabel#WelderGroupHeaderLabel {
+    font-family: "{{font-sans}}";
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: {{text-100}};
+    border: none;
+    background: transparent;
+}
+
+QDialog#WelderEditDialog {
+    background-color: {{bg-100}};
+    border: 1px solid {{border-100}};
+    border-radius: 10px;
+}
+
+QFrame#WelderEditDialogHeader {
+    background-color: {{bg-200}};
+    border: none;
+    border-bottom: 1px solid {{border-100}};
+    border-radius: 0px;
+}
+
+QLabel#WelderEditDialogTitle {
+    color: {{text-300}};
+    font-family: "{{font-sans}}";
+    font-size: 12pt;
+    font-weight: 700;
+    border: none;
+    background: transparent;
+}
+
+QDialog#WelderEditDialog QLabel {
+    color: {{text-200}};
+    font-family: "{{font-sans}}";
+}
+
+QDialog#WelderEditDialog QLabel[class~="MaterialIcon"],
+QDialog#WelderEditDialog QLabel[class~="WelderSectionIcon"],
+QDialog#WelderEditDialog QLabel[class~="Icon_16"] {
+    font-family: "{{font-icon}}" !important;
+}
+
+QDialog#WelderEditDialog QDialogButtonBox#WelderEditButtonBox QPushButton#WelderEditSaveBtn {
+    background-color: {{primary-100}};
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 10pt;
+    min-height: 36px;
+    padding: 0 14px;
+}
+
+QDialog#WelderEditDialog QDialogButtonBox#WelderEditButtonBox QPushButton#WelderEditSaveBtn:hover {
+    background-color: {{primary-200}};
+}
+
+QDialog#WelderEditDialog QDialogButtonBox#WelderEditButtonBox QPushButton#WelderEditCancelBtn {
+    background-color: transparent;
+    color: {{text-100}};
+    border: 1px solid {{primary-100}};
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 10pt;
+    min-height: 36px;
+    padding: 0 14px;
+}
+
+QDialog#WelderEditDialog QDialogButtonBox#WelderEditButtonBox QPushButton#WelderEditCancelBtn:hover {
+    background-color: {{bg-100}};
+}
+
+#WelderEditMediaRow {
+    background: transparent;
+}
+
+QFrame#WelderEditPhotoDropPanel,
+QFrame#WelderEditResumeDropPanel {
+    background-color: {{bg-200}};
+    border: 1px dashed {{border-100}};
+    border-radius: 8px;
+}
+
+QLabel#WelderEditMediaTitle {
+    color: {{text-300}};
+    font-family: "{{font-sans}}";
+    font-size: 10pt;
+    font-weight: 700;
+    border: none;
+    background: transparent;
+}
+
+QLabel#WelderEditMediaHint {
+    color: {{text-100}};
+    font-family: "{{font-sans}}";
+    font-size: 9pt;
+    border: none;
+    background: transparent;
+}
+
+#WelderEditPhotoThumb {
+    background-color: {{bg-100}};
+    border: 1px solid {{border-100}};
+    border-radius: 10px;
+}
+
+#WelderEditResumeDropWidget {
+    background-color: {{bg-100}};
+    border: 1px dashed {{primary-100}};
+    border-radius: 8px;
+}
+
 WelderItemWidget QLabel#WelderChevron {
     font-family: "{{font-icon}}" !important;
-    font-size: 24px;
+    font-size: 22pt;
     color: {{text-100}};
     border: none;
     background: transparent;
@@ -4962,13 +5199,13 @@ QPushButton#WelderFormAddBtn QLabel {
     background: transparent;
     border: none;
     font-family: "{{font-sans}}";
-    font-size: 16px;
+    font-size: 14pt;
     font-weight: 700;
 }
 
 QPushButton#WelderFormAddBtn QLabel[class="Icon"] {
     font-family: "{{font-icon}}" !important;
-    font-size: 24px;
+    font-size: 22pt;
 }
 
 QPushButton.WelderAssignBtn {
@@ -4977,7 +5214,7 @@ QPushButton.WelderAssignBtn {
     border-radius: 6px;
     color: {{text-300}};
     font-family: "{{font-sans}}";
-    font-size: 13px;
+    font-size: 11pt;
     font-weight: 600;
 }
 QPushButton.WelderAssignBtn:hover {
@@ -4997,7 +5234,7 @@ QPushButton.WelderAssignBtn:hover {
     background-color: rgba(34, 115, 195, 0.2);
     color: {{primary-100}};
     font-family: "{{font-sans}}";
-    font-size: 12px;
+    font-size: 10pt;
     font-weight: 700;
     padding: 4px 12px;
     border-radius: 12px;
@@ -5011,19 +5248,19 @@ QPushButton.WelderAssignBtn:hover {
     border-bottom: 1px solid transparent;
     color: {{text-300}};
     font-family: "{{font-sans}}";
-    font-size: 40px;
+    font-size: 38pt;
     font-weight: 700;
     padding-top: 15px;
     padding-bottom: 2px;
 }
 #WelderFormTitleInput[sub="true"] {
     color: {{text-100}};
-    font-size: 24px;
+    font-size: 22pt;
     font-weight: normal;
 }
 #WelderFormTitleInput[skill="true"] {
     color: {{text-100}};
-    font-size: 20px;
+    font-size: 18pt;
     font-weight: normal;
 }
 #WelderFormTitleInput:focus:!readOnly {
@@ -5036,7 +5273,7 @@ QPushButton.WelderAssignBtn:hover {
     border: none;
     border-radius: 4px;
     font-family: "{{font-icon}}" !important;
-    font-size: 24px;
+    font-size: 22pt;
     padding-bottom: 2px;
 }
 #WelderCloseBtn:hover {
@@ -5047,7 +5284,7 @@ QPushButton.WelderAssignBtn:hover {
 /* Sections */
 QLabel.WelderSectionHeader {
     font-family: "{{font-sans}}";
-    font-size: 14px;
+    font-size: 12pt;
     font-weight: 700;
     color: {{text-100}};
     text-transform: uppercase;
@@ -5057,7 +5294,7 @@ QLabel.WelderSectionHeader {
 
 QLabel.WelderSectionIcon {
     font-family: "{{font-icon}}" !important;
-    font-size: 14px;
+    font-size: 12pt;
     color: {{text-100}};
     border: none;
 }
@@ -5080,7 +5317,7 @@ WelderPhotoWidget[editMode="true"] {
 
 WelderPhotoWidget QLabel#PhotoIcon {
     font-family: "{{font-icon}}" !important;
-    font-size: 36px;
+    font-size: 34pt;
     color: {{text-100}};
     border: none;
 }
@@ -5090,8 +5327,8 @@ WelderPhotoWidget QPushButton#RotateBtn {
     color: white;
     border-radius: 15px;
     font-family: "{{font-icon}}" !important;
-    font-size: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 16pt;
+    border: 1px solid {{border-100}};
     padding: 0px;
     margin: 0px;
 }
@@ -5109,8 +5346,8 @@ WelderResumeWidget {
 
 WelderResumeWidget QLabel#ResumeIcon {
     font-family: "{{font-icon}}" !important;
-    font-size: 32px;
-    color: #3B82F6; 
+    font-size: 30pt;
+    color: {{primary-100}}; 
     padding: 10px;
     background: rgba(59, 130, 246, 0.1);
     border-radius: 8px;
@@ -5119,17 +5356,17 @@ WelderResumeWidget QLabel#ResumeIcon {
 WelderResumeWidget QLabel#ResumeName { 
     color: {{text-300}}; 
     font-weight: 700; 
-    font-size: 16px; 
+    font-size: 14pt; 
     border: none; 
 }
 WelderResumeWidget QLabel#ResumeDesc { 
     color: {{text-100}}; 
-    font-size: 14px; 
+    font-size: 12pt; 
     border: none; 
 }
 WelderResumeWidget QLabel#ResumeAction {
     font-family: "{{font-icon}}" !important;
-    font-size: 24px;
+    font-size: 22pt;
     color: {{text-100}};
 }
 WelderResumeWidget[editMode="true"] QLabel#ResumeAction {
@@ -5139,7 +5376,7 @@ WelderResumeWidget[editMode="true"] QLabel#ResumeAction {
 /* Timeline/Fields */
 WelderEditableField QLabel.WelderFieldTitle {
     color: {{text-100}};
-    font-size: 14px;
+    font-size: 12pt;
     border: none;
 }
 
@@ -5150,7 +5387,7 @@ WelderEditableField QLineEdit.WelderFieldValue {
     border-radius: 0px;
     color: {{text-300}};
     font-family: "{{font-sans}}";
-    font-size: 16px;
+    font-size: 14pt;
     font-weight: 500;
     text-align: right;
     padding: 0;
@@ -5164,7 +5401,7 @@ WelderEditableField QLineEdit.WelderFieldValue:focus:!readOnly {
 TimelineItemWidget QLabel.TimelineTitle {
     color: {{text-100}};
     font-weight: 700;
-    font-size: 13px;
+    font-size: 11pt;
     border: none;
 }
 
@@ -5173,7 +5410,7 @@ TimelineItemWidget QLabel.TimelineBadge {
     color: #FB923C;
     font-family: "{{font-sans}}";
     font-weight: 700;
-    font-size: 12px;
+    font-size: 10pt;
     padding: 4px 8px;
     border-radius: 4px;
     border: none;
@@ -5183,7 +5420,7 @@ TimelineItemWidget QLabel.TimelineBadge {
 ModernDatePicker QLabel#DatePickerText {
     color: {{text-300}};
     font-family: "{{font-sans}}";
-    font-size: 14px;
+    font-size: 9pt;
     background: transparent;
     border: none;
 }
@@ -5194,7 +5431,7 @@ ModernDatePicker[editMode="true"] QLabel#DatePickerText {
 ModernDatePicker QLabel#DatePickerIcon {
     color: {{text-100}};
     font-family: "{{font-icon}}" !important;
-    font-size: 18px;
+    font-size: 16pt;
     background: transparent;
     border: none;
 }
@@ -5216,7 +5453,7 @@ ModernDatePicker QPushButton:focus {
 QPushButton.WelderFormBtn {
     border-radius: 8px;
     font-family: "{{font-sans}}";
-    font-size: 14px;
+    font-size: 12pt;
     font-weight: 600;
     padding-bottom: 2px;
 }
@@ -5273,13 +5510,13 @@ QStatusBar#MainStatusBar {
 
 #HelpPageTitle {
     color: #E1E2E5;
-    font-size: 24px;
+    font-size: 22pt;
     font-weight: bold;
 }
 
 #HelpPageSubtitle {
     color: #94A3B8;
-    font-size: 13px;
+    font-size: 11pt;
 }
 
 #HelpPageBadge {
@@ -5287,7 +5524,7 @@ QStatusBar#MainStatusBar {
     color: #22C55E;
     border-radius: 4px;
     padding: 2px 8px;
-    font-size: 10px;
+    font-size: 8pt;
     font-weight: bold;
 }
 
@@ -5311,7 +5548,7 @@ QStatusBar#MainStatusBar {
 
 .HelpCardTitle {
     color: #5C829D;
-    font-size: 16px;
+    font-size: 14pt;
     font-weight: bold;
 }
 
@@ -5321,7 +5558,7 @@ QStatusBar#MainStatusBar {
 
 .HelpItemLabel {
     color: #22C55E;
-    font-size: 13px;
+    font-size: 11pt;
 }
 
 .HelpShortcutLabel {
@@ -5335,48 +5572,48 @@ QStatusBar#MainStatusBar {
 
 .HelpMouseTitle {
     color: #E1E2E5;
-    font-size: 14px;
+    font-size: 12pt;
     font-weight: bold;
 }
 
 .HelpMouseDesc {
     color: #94A3B8;
-    font-size: 12px;
+    font-size: 10pt;
 }
 
 .MaterialIcon {
-    font-family: 'Material Symbols Outlined Medium';
-    color: #5C829D;
+    font-family: '{{font-icon}}';
+    color: {{primary-100}};
 }
 
 #HelpPageTitleIcon {
-    color: #5C829D;
+    color: {{primary-100}};
 }
 
 .HelpTechLabel {
-    color: #64748B;
-    font-size: 10px;
+    color: {{text-100}};
+    font-size: 8pt;
     letter-spacing: 1px;
 }
 
 .HelpTechLabelReady {
-    color: #22C55E;
-    font-size: 10px;
+    color: {{accent-100}};
+    font-size: 8pt;
     letter-spacing: 1px;
 }
 
 #HelpCopyrightLabel {
-    color: #475569;
-    font-size: 9px;
+    color: {{text-100}};
+    font-size: 7pt;
     margin-top: 10px;
 }
 
 /* ============ Data & Report Integration Styles ============ */
 .DataFormGroup {
-    background-color: #25282E;
+    background-color: {{bg-300}};
     border-radius: 8px;
     padding: 15px;
-    border: 1px solid #353B48;
+    border: 1px solid {{border-100}};
 }
 
 #DataGroup {
@@ -5384,209 +5621,850 @@ QStatusBar#MainStatusBar {
 }
 
 .ReportTable {
-    background-color: #1A1C1E;
-    border: 1px solid #353B48;
-    alternate-background-color: #25282E;
-    gridline-color: #2D3139;
-    color: #E1E2E5;
+    background-color: {{bg-300}};
+    border: 1px solid {{border-100}};
+    alternate-background-color: {{bg-200}};
+    gridline-color: {{border-100}};
+    color: {{text-200}};
     border-radius: 8px;
 }
 
 .ReportTable::item {
     padding: 10px;
-    border-bottom: 1px solid #2D3139;
+    border-bottom: 1px solid {{border-100}};
 }
 
 .ReportTable::item:selected {
     background-color: rgba(59, 131, 247, 0.2);
-    color: #3b83f7;
-    border-left: 3px solid #3b83f7;
-}
-
-#ActionBtn {
-    background-color: #3b83f7;
-    color: white;
-    border-radius: 6px;
-    padding: 8px 20px;
-    font-weight: bold;
-    font-size: 13px;
-}
-
-#ActionBtn:hover {
-    background-color: #2c6ddb;
-}
-
-#ActionBtn:pressed {
-    background-color: #1e4eb8;
-}
-
-#SecondaryButton {
-    background-color: transparent;
-    color: #94A3B8;
-    border: 1px solid #353B48;
-    border-radius: 6px;
-    padding: 8px 20px;
-    font-weight: bold;
-    font-size: 13px;
-}
-
-#SecondaryButton:hover {
-    background-color: #25282E;
-    color: #E1E2E5;
-    border-color: #4A5568;
-}
-
-
-.MaterialIcon {
-    font-family: 'Material Symbols Outlined Medium';
-    font-size: 20px;
-    color: #8B909A;
+    color: {{primary-100}};
+    border-left: 3px solid {{border-100}};
 }
 
 #HeaderTitle {
-    color: #E1E2E5;
-    font-size: 24px;
+    color: {{text-200}};
+    font-size: 22pt;
     font-weight: bold;
 }
 
 #HeaderSubTitle {
-    color: #94A3B8;
-    font-size: 11px;
+    color: {{text-100}};
+    font-size: 9pt;
     letter-spacing: 1px;
 }
 
 #TabContainer {
-    background-color: #121416;
+    background-color: {{bg-300}};
     border-radius: 8px;
-    border: 1px solid #2D3139;
+    border: 1px solid {{border-100}};
 }
 
 #TabButton {
     background-color: transparent;
-    color: #94A3B8;
+    color: {{text-100}};
     border-radius: 6px;
     padding: 8px 16px;
     font-weight: bold;
 }
 
 #TabButton:checked {
-    background-color: #3b83f7;
+    background-color: {{primary-100}};
     color: white;
 }
 
 #PathEdit {
-    background-color: #121416;
-    border: 1px solid #353B48;
+    background-color: {{bg-300}};
+    border: 1px solid {{border-100}};
     border-radius: 6px;
-    color: #E1E2E5;
+    color: {{text-200}};
     padding: 8px;
 }
 
 #PathEdit:hover {
-    border-color: #3b83f7;
+    border-color: {{primary-100}};
 }
 
 #LogView {
-    background-color: #121416;
-    border: 1px solid #353B48;
+    background-color: {{bg-300}};
+    border: 1px solid {{border-100}};
     border-radius: 8px;
-    color: #94A3B8;
+    color: {{text-100}};
     font-family: 'Consolas', monospace;
     padding: 10px;
 }
 
 /* ============ Dialog Specific Styles ============ */
-#BackupRestoreDialog {
-    background-color: #1A1C1E;
-    border: 1px solid #353B48;
-    border-radius: 12px;
-}
-
-#DialogTitleBar {
-    background-color: #25282E;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    border-bottom: 1px solid #353B48;
-    padding: 10px;
-}
-
 .PathEdit {
-    background-color: #31363F;
-    border: 1px solid #353B48;
+    background-color: {{bg-300}};
+    border: 1px solid {{border-100}};
     border-radius: 6px;
-    color: #E1E2E5;
+    color: {{text-200}};
     padding-left: 12px;
-    font-size: 13px;
+    font-size: 11pt;
 }
 
 .PathEdit:hover {
-    border-color: #3b83f7;
+    border-color: {{primary-100}};
 }
 
 .PathEdit:focus {
-    border-color: #3b83f7;
-    background-color: #1A1C1E;
+    border-color: {{primary-100}};
+    background-color: {{bg-300}};
 }
 
 #BackupListWidget {
-    background-color: #121416;
-    border: 1px solid #353B48;
+    background-color: {{bg-300}};
+    border: 1px solid {{border-100}};
     border-radius: 8px;
     outline: none;
 }
 
 #BackupListItemLabel {
-    color: #E1E2E5;
+    color: {{text-200}};
     font-weight: bold;
     padding: 2px 0;
 }
 
 /* Material Icon 표준 크기 (24px) */
 #IconLabel {
-    font-size: 24px;
-    color: #A0A8B4;
+    font-size: 22pt;
+    color: {{text-100}};
     padding: 0;
     margin: 0;
 }
 
 /* 경로 입력 필드 스타일 통합 */
 #path_edit {
-    background-color: #1A1C1E; /* 앱 표준 LineEdit 배경색 */
-    border: 1px solid #353B48;
+    background-color: {{bg-300}}; /* 앱 표준 LineEdit 배경색 */
+    border: 1px solid {{border-100}};
     border-radius: 4px;
     padding: 5px 10px;
-    color: #E1E2E5;
+    color: {{text-200}};
 }
 
 #path_edit:focus {
-    border: 1px solid #1392ec; /* 포커스 시 강조색 (primary-100) */
+    border: 1px solid {{primary-100}};
+}
+
+#FolderBrowseButton {
+    background-color: {{bg-300}};
+    border: 1px solid {{border-100}};
+    border-radius: 4px;
+    color: {{text-100}};
+    padding: 0;
+}
+
+#FolderBrowseButton:hover {
+    border: 1px solid {{primary-100}};
+    color: {{text-200}};
+    background-color: {{bg-300}};
+}
+
+#FolderBrowseButton:pressed {
+    background-color: {{bg-100}};
 }
 
 #BackupListWidget::item {
     background-color: transparent;
-    border-bottom: 1px solid #1C1E22;
+    border-bottom: 1px solid {{border-100}};
 }
 
 #BackupListWidget::item:hover {
-    background-color: #1C1E22;
+    background-color: {{bg-300}};
 }
 
 #BackupListWidget::item:selected {
-    background-color: #25282E;
-    border-left: 3px solid #1392ec;
+    background-color: {{bg-300}};
+    border-left: 3px solid {{primary-100}};
 }
 
 #EmptyStateLabel {
-    color: #4A5568;
-    font-size: 14px;
+    color: {{text-100}};
+    font-size: 12pt;
     font-weight: bold;
 }
 
 #DetailInfoLabel {
-    color: #94A3B8;
-    font-size: 12px;
+    color: {{text-100}};
+    font-size: 10pt;
+    padding: 5px;
+}
+
+/* ============ QMenu (Selector Button) ============ */
+QMenu {
+    background-color: {{bg-100}};       /* 앱 메인 어두운 배경색 */
+    border: 1px solid {{border-100}};       /* 연한 경계선 */
+    border-radius: 6px;              /* 부드러운 라운드 처리 */
+    padding: 5px 0px;                /* 위아래 여백 */
+}
+
+QMenu::item {
+    background-color: transparent;
+    padding: 8px 32px 8px 20px;      /* 텍스트 아이템 기본 좌측 간격 유지 */
+    color: {{text-100}};                  /* 부드러운 화이트/그레이 */
+    font-size: 10pt;
+}
+
+QMenu::icon {
+    padding-left: 24px;               /* 아이콘만 좌측에서 24px 안쪽으로 이동 */
+}
+
+QMenu::item:selected {
+    background-color: {{primary-100}};       /* 호버 시 부드러운 하이라이트 색상 */
+    color: #ffffff;                  /* 포인트 컬러 (블루 계열 테마색) */
+}
+
+QMenu::separator {
+    height: 1px;
+    background: {{border-100}};             /* 구분선 스타일 */
+    margin: 4px 0px;
+}
+
+/* ============ Footer Button (Direct Mode) ============ */
+QPushButton#footer_complete_btn[activeMode="direct"] {
+    background-color: {{accent-100}};
+    padding: 8px 20px;
+    font-weight: bold;
+    font-size: 11pt;
+}
+
+#SecondaryButton:hover {
+    background-color: {{bg-300}};
+    color: {{text-100}};
+    border-color: {{border-100}};
+}
+
+
+.MaterialIcon {
+    font-family: 'Material Symbols Outlined Medium';
+    font-size: 18pt;
+    color: {{text-100}};
+}
+
+#HeaderTitle {
+    color: {{text-200}};
+    font-size: 22pt;
+    font-weight: bold;
+}
+
+#HeaderSubTitle {
+    color: {{text-100}};
+    font-size: 9pt;
+    letter-spacing: 1px;
+}
+
+#TabContainer {
+    background-color: {{bg-300}};
+    border-radius: 8px;
+    border: 1px solid {{border-100}};
+}
+
+#TabButton {
+    background-color: transparent;
+    color: {{text-100}};
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: bold;
+}
+
+#TabButton:checked {
+    background-color: {{primary-100}};
+    color: white;
+}
+
+#PathEdit {
+    background-color: {{bg-300}};
+    border: 1px solid {{border-100}};
+    border-radius: 6px;
+    color: {{text-200}};
+    padding: 8px;
+}
+
+#PathEdit:hover {
+    border-color: {{primary-100}};
+}
+
+#LogView {
+    background-color: {{bg-300}};
+    border: 1px solid {{border-100}};
+    border-radius: 8px;
+    color: {{text-100}};
+    font-family: 'Consolas', monospace;
+    padding: 10px;
+}
+
+/* ============ Dialog Specific Styles ============ */
+#BackupRestoreDialog {
+    background-color: {{bg-300}};
+    border: 1px solid {{border-100}};
+    border-radius: 12px;
+}
+
+#DialogTitleBar {
+    background-color: {{bg-300}};
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom: 1px solid {{border-100}};
+    padding: 10px;
+}
+
+.PathEdit {
+    background-color: {{bg-300}};
+    border: 1px solid {{border-100}};
+    border-radius: 6px;
+    color: {{text-200}};
+    padding-left: 12px;
+    font-size: 11pt;
+}
+
+.PathEdit:hover {
+    border-color: {{primary-100}};
+}
+
+.PathEdit:focus {
+    border-color: {{primary-100}};
+    background-color: {{bg-300}};
+}
+
+#BackupListWidget {
+    background-color: {{bg-300}};
+    border: 1px solid {{border-100}};
+    border-radius: 8px;
+    outline: none;
+}
+
+#BackupListItemLabel {
+    color: {{text-200}};
+    font-weight: bold;
+    padding: 2px 0;
+}
+
+/* Material Icon 표준 크기 (24px) */
+#IconLabel {
+    font-size: 22pt;
+    color: {{text-100}};
+    padding: 0;
+    margin: 0;
+}
+
+/* 경로 입력 필드 스타일 통합 */
+#path_edit {
+    background-color: {{bg-300}}; /* 앱 표준 LineEdit 배경색 */
+    border: 1px solid {{border-100}};
+    border-radius: 4px;
+    padding: 5px 10px;
+    color: {{text-200}};
+}
+
+#path_edit:focus {
+    border: 1px solid {{primary-100}}; /* 포커스 시 강조색 (primary-100) */
+}
+
+#BackupListWidget::item {
+    background-color: transparent;
+    border-bottom: 1px solid {{border-100}};
+}
+
+#BackupListWidget::item:hover {
+    background-color: {{bg-300}};
+}
+
+#BackupListWidget::item:selected {
+    background-color: {{bg-300}};
+    border-left: 3px solid {{primary-100}};
+}
+
+#EmptyStateLabel {
+    color: {{text-100}};
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+#DetailInfoLabel {
+    color: {{text-100}};
+    font-size: 10pt;
     padding: 5px;
 }
 
 
+
+
+/* ============ QMenu (Selector Button) ============ */
+QMenu {
+    background-color: {{bg-100}};       /* 앱 메인 어두운 배경색 */
+    border: 1px solid {{border-100}};       /* 연한 경계선 */
+    border-radius: 6px;              /* 부드러운 라운드 처리 */
+    padding: 5px 0px;                /* 위아래 여백 */
+}
+
+QMenu::item {
+    background-color: transparent;
+    padding: 8px 32px 8px 20px;      /* 텍스트 아이템 기본 좌측 간격 유지 */
+    color: {{text-100}};                  /* 부드러운 화이트/그레이 */
+    font-size: 10pt;
+}
+
+QMenu::icon {
+    padding-left: 8px;               /* 아이콘만 좌측에서 8px 안쪽으로 이동 */
+}
+
+QMenu::item:selected {
+    background-color: {{primary-100}};       /* 호버 시 부드러운 하이라이트 색상 */
+    color: #ffffff;                  /* 포인트 컬러 (블루 계열 테마색) */
+}
+
+QMenu::separator {
+    height: 1px;
+    background: {{border-100}};             /* 구분선 스타일 */
+    margin: 4px 0px;
+}
+
+/* ============ Footer Button (Direct Mode) ============ */
+QPushButton#footer_complete_btn[activeMode="direct"] {
+    background-color: {{accent-100}};
+    border: 2px solid {{accent-100}};
+    color: {{text-200}};
+    font-weight: bold;
+}
+
+QPushButton#footer_complete_btn[activeMode="direct"]:hover {
+    opacity: 0.9;
+}
+
+/* Hide default menu indicator because we use custom icon with RightToLeft layout */
+QPushButton#footer_complete_btn::menu-indicator {
+    image: none;
+    width: 0px;
+}
+
+/* ============ ReportCenterPage ============ */
+#ReportCenterPage {
+    background-color: {{bg-300}};
+    border: none;
+    border-left: 1px solid {{border-100}};
+    border-right: 1px solid {{border-100}};
+    border-radius: 0px;
+}
+
+.ContentHeader {
+    background-color: {{bg-200}};
+    border-radius: 0px;
+}
+
+.PageHeaderIcon {
+    color: {{primary-100}};
+    font-family: "{{font-icon}}" !important;
+}
+
+
+.VersionBadge {
+    background-color: rgba(0, 133, 255, 0.2);
+    color: {{primary-100}};
+    border: 1px solid rgba(0, 133, 255, 0.3);
+    border-radius: 4px;
+    padding: 2px 6px;
+}
+
+.PrimaryActionBtn {
+    background-color: {{primary-100}};
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    padding-left: 32px;
+}
+.PrimaryActionBtn:hover { background-color: {{primary-200}}; }
+
+.SecondaryActionBtn {
+    background-color: {{bg-400}};
+    color: {{text-100}};
+    border: 1px solid {{border-200}};
+    border-radius: 8px;
+    padding-left: 28px;
+}
+.SecondaryActionBtn:hover { color: {{primary-100}}; }
+
+.FilterLabel {
+    color: {{text-100}};
+    letter-spacing: 1px;
+}
+
+.FilterCombo, .FilterInput {
+    background-color: {{bg-400}};
+    border: 1px solid {{border-200}};
+    border-radius: 8px;
+    color: {{text-200}};
+    padding: 4px 12px;
+}
+.FilterCombo:focus, .FilterInput:focus {
+    border: 1px solid {{primary-100}};
+}
+
+/* Stat Cards */
+.StatCard {
+    background-color: {{bg-100}};
+    border-radius: 12px;
+}
+.StatCard[state="primary"] {
+    background-color: rgba(0, 133, 255, 0.1);
+    border: 1px solid rgba(0, 133, 255, 0.2);
+}
+
+.StatCardTitle { color: {{text-100}}; }
+.StatCard[state="primary"] .StatCardTitle { color: {{primary-100}}; }
+
+.StatCardValue { color: {{text-200}}; }
+.StatCard[state="primary"] .StatCardValue { color: {{text-200}}; }
+
+.StatCardIcon { color: {{text-100}}; font-family: "{{font-icon}}" !important; }
+.StatCard[state="primary"] .StatCardIcon { color: {{primary-100}}; }
+
+/* Report Item */
+.ReportListContainer {
+    border: none;
+    background-color: transparent;
+}
+
+.ReportItem {
+    background-color: {{bg-100}};
+    border: 1px solid {{border-100}};
+    border-radius: 12px;
+}
+.ReportItem:hover {
+    border: 1px solid rgba(0, 133, 255, 0.3);
+}
+.ReportItem[state="closed"] {
+    opacity: 0.6;
+}
+
+.ItemCheckContainer {
+    background-color: rgba(41, 46, 59, 0.3);
+    border-right: 1px solid {{border-100}};
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.ItemActionContainer {
+    background-color: rgba(41, 46, 59, 0.3);
+    border-left: 1px solid {{border-100}};
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.DataLabel { color: {{text-100}}; letter-spacing: 0.5px; }
+.ReportNoText { color: {{primary-100}}; font-family: "Consolas", monospace; }
+.ProjectTitleText { color: {{text-200}}; }
+.WOText, .MetaText, .AreaText { color: {{text-100}}; }
+
+.ItemRowSeparator { background-color: rgba(255, 255, 255, 0.05); }
+
+.StakeAvatar {
+    border-radius: 10px;
+    border: 1px solid {{border-100}};
+    background-color: {{bg-400}};
+}
+.StakeAvatar[state="primary"] { color: {{primary-100}}; }
+.StakeAvatar[state="muted"] { color: {{text-100}}; }
+.StakeAvatar[state="warn"] { color: {{text-300}}; }
+
+.StakeName { color: {{text-200}}; }
+
+.StatusTag {
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 8pt;
+    font-weight: bold;
+}
+.StatusTag[state="ok"] { background-color: rgba(74, 222, 128, 0.1); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.2); }
+.StatusTag[state="fail"] { background-color: rgba(248, 113, 113, 0.1); color: #f87171; border: 1px solid rgba(248, 113, 113, 0.2); }
+.StatusTag[state="pending"] { background-color: rgba(251, 191, 36, 0.1); color: {{text-300}}; border: 1px solid rgba(251, 191, 36, 0.2); }
+
+.ApprovalText { color: {{text-100}}; }
+
+.ItemActionBtn {
+    background-color: {{bg-400}};
+    color: {{text-100}};
+    border: 1px solid {{border-200}};
+    border-radius: 8px;
+    font-weight: 900;
+}
+.ItemActionBtn[state="locked"] { background-color: rgba(248, 113, 113, 0.1); color: #f87171; border: 1px solid rgba(248, 113, 113, 0.2); }
+.ItemActionBtn[state="locked"]:hover { background-color: #f87171; color: white; }
+
+.BtnIcon { font-family: "{{font-icon}}" !important; color: inherit; }
+
+/* Footer */
+.ContentFooter {
+    background-color: rgba(20, 23, 31, 0.95);
+    border-top: 1px solid {{border-100}};
+}
+
+.FooterAvatar {
+    border-radius: 12px;
+    border: 2px solid {{bg-300}};
+}
+.FooterAvatar[state="user1"] { background-color: {{primary-100}}; color: white; }
+.FooterAvatar[state="user2"] { background-color: {{bg-400}}; color: {{text-100}}; }
+.FooterAvatar[state="user3"] { background-color: {{text-300}}; color: {{bg-100}}; }
+
+.FooterStatus { color: {{text-100}}; }
+
+.FooterActionBtn {
+    background-color: {{bg-400}};
+    color: {{text-200}};
+    border: 1px solid {{border-200}};
+    border-radius: 8px;
+    font-weight: bold;
+}
+.FooterActionBtn:hover { background-color: {{bg-200}}; }
+
+.FooterCloseBtn {
+    background-color: {{bg-400}};
+    color: {{text-100}};
+    border: 1px solid {{border-200}};
+    border-radius: 8px;
+    font-weight: bold;
+}
+.FooterCloseBtn:hover { color: white; }
+
+.FooterSep { background-color: {{border-100}}; }
+
+.FAB {
+    background-color: {{primary-100}};
+    color: white;
+    border-radius: 28px;
+    font-size: 24pt;
+    font-weight: normal;
+}
+.FAB:hover { background-color: {{primary-200}}; }
+
+/* ============ QScrollArea & Container Transparency Fix ============ */
+.ReportScrollArea, 
+.ReportScrollArea > QWidget > QWidget,
+#list_container {
+    background-color: transparent !important;
+    border: none !important;
+    background: none;
+}
+
+/* ============ PlusCheckBox Tristate Styles ============ */
+/* Note: Since PlusCheckBox uses QPainter, QSS indicator styles are for fallback 
+   or complementary styling if needed. However, per requirement, we define them. */
+QCheckBox::indicator:indeterminate {
+    /* the PLUS Piping Design System: Indeterminate state (-) */
+    image: none;
+    background-color: {{primary-100}};
+    border: 1.5px solid {{primary-100}};
+    border-radius: 4px;
+    width: 20px;
+    height: 20px;
+}
+
+/* ============ Report Center Joint Statistics ============ */
+/* 윗줄 타이틀 스타일: 메인 텍스트보다 작고 직관적이게 세팅 */
+QLabel.StatTitleLabel {
+    font-family: {{font-sans-bold}};
+    font-size: 9pt;            /* 타이틀은 한 텍스트 레벨 낮춰서 컴팩트하게 */
+    color: {{text-100}};       /* 약간 더 차분한 그레이/뮤트 톤 */
+    letter-spacing: 0.5px;
+}
+
+/* 아랫줄 수치 데이터 공통 스타일 */
+QLabel[class^="StatValLabel_"] {
+    font-family: {{font-grotesk}};
+    font-size: 12pt;           /* 수치 데이터는 크게 강조 */
+    font-weight: bold;
+}
+
+/* 개별 수치 색상 정의 */
+QLabel[class="StatValLabel_Total"] {
+    color: #FFFFFF;            /* 전체 수치는 선명한 화이트 */
+}
+
+QLabel[class="StatValLabel_Accept"] {
+    color: #2ECC71;            /* 합격 수치는 모던 테마 그린 */
+}
+
+QLabel[class="StatValLabel_Reject"] {
+    color: {{text-100}};       /* 기본 0개일 때는 비활성화 색상 */
+}
+
+/* 불합격(Reject)이 1개 이상 존재할 때 상단으로 강하게 강조 */
+QLabel[class="StatValLabel_Reject"][hasWarning="true"] {
+    color: #E74C3C;            /* 불합격 발생 시 선명한 경고 레드 */
+}
+
+/* ============ Report Right Info (Area & Location) ============ */
+QLabel.AreaText {
+    color: {{primary-100}};
+    font-weight: bold;
+}
+
+QLabel.LocationText {
+    color: {{text-200}};
+    font-weight: bold;
+}
+
+/* ============ Report Center Filter Styles ============ */
+QComboBox.FilterCombo {
+    font-size: 10pt;
+}
+
+QComboBox.FilterCombo QAbstractItemView {
+    font-size: 10pt;
+}
+
+/* ============ ThemeSkeletonCard ============ */
+.ThemeSkeletonCard {
+    background-color: {{bg-200}};
+    border: 1px solid {{border-100}};
+    border-radius: 8px;
+}
+
+/* ============ Dashboard Fixes ============ */
+.DashboardTableHeader {
+    background-color: {{bg-300}};
+    border-bottom: 1px solid {{border-100}};
+}
+
+/* DashboardTable: 테이블 본체, 뷰포트, 헤더 뷰 배경 모두 bg-300 으로 통일 */
+.DashboardTable,
+.DashboardTable QWidget,
+.DashboardTable QAbstractItemView,
+QTableWidget.DashboardTable,
+QTableWidget.DashboardTable QTableCornerButton::section {
+    background-color: {{bg-300}};
+    border: none;
+}
+
+/* 테이블 뷰포트(실제 셀 영역) 배경 */
+QTableWidget.DashboardTable QAbstractScrollArea > QWidget,
+.DashboardTable > QAbstractScrollArea > QWidget,
+.DashboardTable QScrollArea > QWidget {
+    background-color: {{bg-300}};
+}
+
+/* 헤더 뷰 배경 (object name 기반) */
+QHeaderView#dashboard-header,
+QHeaderView#dashboard-header::section {
+    background-color: {{bg-200}};
+    color: {{text-100}};
+    font-weight: bold;
+    font-size: 9pt;
+    border: none;
+    border-bottom: 1px solid {{border-100}};
+    padding: 6px 8px;
+}
+
+/* 프로젝트 목록 스크롤 영역 배경 */
+.DashboardScrollArea,
+.DashboardScrollArea > QWidget,
+.DashboardScrollArea QScrollArea > QWidget {
+    background-color: {{bg-300}};
+    border: none;
+}
+
+/* 스크롤 영역 뷰포트 명시적 배경 */
+#DashboardProjectsScrollViewport,
+#DashboardProjectsScrollArea > QWidget,
+#DashboardProjectsContainer {
+    background-color: {{bg-300}};
+}
+
+/* DashboardChartSurface: 차트 위젯 배경 (paintEvent에서 채우지만 QSS도 정의) */
+.DashboardChartSurface {
+    background-color: {{bg-300}};
+    border: none;
+}
+
+/* DashboardCard: 내부 자식 위젯들의 배경이 투명하게 유지되도록 */
+.DashboardCard > QWidget,
+.DashboardCard QLabel,
+.DashboardCard QFrame {
+    background-color: transparent;
+}
+
+/* DashboardTitle, DashboardCardTitle */
+.DashboardTitle {
+    color: {{text-100}};
+    font-weight: bold;
+    font-size: 9pt;
+    background: transparent;
+    padding-left: 12px;
+}
+.DashboardCardTitle {
+    color: {{text-200}};
+    font-weight: bold;
+    font-size: 12pt;
+    background: transparent;
+}
+
+/* DashboardDateButton */
+.DashboardDateButton {
+    background-color: {{bg-200}};
+    color: {{text-100}};
+    border: 1px solid {{border-100}};
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 9pt;
+    font-weight: bold;
+}
+.DashboardDateButton:hover {
+    background-color: {{bg-100}};
+    border-color: {{primary-100}};
+}
+
+/* DashboardTableBtnPrimary / Secondary / Danger */
+.DashboardTableBtnPrimary {
+    background-color: {{primary-100}};
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 8pt;
+    font-weight: bold;
+}
+.DashboardTableBtnPrimary:hover { background-color: {{accent-100}}; }
+
+.DashboardTableBtnSecondary {
+    background-color: {{bg-100}};
+    color: {{text-100}};
+    border: 1px solid {{border-100}};
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 8pt;
+    font-weight: bold;
+}
+.DashboardTableBtnSecondary:hover { border-color: {{primary-100}}; color: {{primary-100}}; }
+
+.DashboardTableBtnDanger {
+    background-color: rgba(244, 63, 94, 0.15);
+    color: #F43F5E;
+    border: 1px solid rgba(244, 63, 94, 0.4);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 8pt;
+    font-weight: bold;
+}
+.DashboardTableBtnDanger:hover { background-color: rgba(244, 63, 94, 0.25); }
+
+/* DashboardValueTiny */
+.DashboardValueTiny {
+    color: {{text-200}};
+    font-size: 7pt;
+    font-weight: bold;
+    background: transparent;
+}
+
+/* DashboardSmallTitle */
+.DashboardSmallTitle {
+    color: {{text-100}};
+    font-size: 9pt;
+    background: transparent;
+}
+
+/* DashboardFooter */
+#DashboardFooter {
+    background-color: {{bg-200}};
+    border-top: 1px solid {{border-100}};
+}
 
