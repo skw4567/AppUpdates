@@ -1,51 +1,14 @@
 {
-  "version": "2026.05.31.1110",
-  "tag": "v2026.05.31.1110",
-  "generated_at": "2026-05-31T02:10:49Z",
-  "source": "C:/Development/Publisher/AppUpdates/release_update",
+  "schema_version": 2,
+  "version": "v2026.06.14-rev2",
+  "generated_at": "2026-06-14T13:36:45Z",
+  "source": "C:/Development/thePlusPiping_Master/release_update",
   "files": {
-    "ColorTheme/Dark.clr": {
-      "url": "https://raw.githubusercontent.com/skw4567/AppUpdates/updates/release_update/ColorTheme/Dark.clr",
-      "hash": "e299ef2367a2107ddd24a8af41a70e3bdcaba643b91a5378e61c78479aca9562",
-      "size": 1712,
-      "target_dir": "appdata:ColorTheme",
-      "publish_mode": "git_branch"
-    },
-    "ColorTheme/Light.clr": {
-      "url": "https://raw.githubusercontent.com/skw4567/AppUpdates/updates/release_update/ColorTheme/Light.clr",
-      "hash": "75bfe1a7393c7f84ef14dd83ab70fd1d51b963ee1b50c9b9d544c789fe27f4cd",
-      "size": 1591,
-      "target_dir": "appdata:ColorTheme",
-      "publish_mode": "git_branch"
-    },
-    "ColorTheme/modern_style.qss": {
-      "url": "https://raw.githubusercontent.com/skw4567/AppUpdates/updates/release_update/ColorTheme/modern_style.qss",
-      "hash": "30c18a39cb95c66a9de2cbd27aeb33dd2b4b287a69fae420efd61383024858b6",
-      "size": 150024,
-      "target_dir": "appdata:ColorTheme",
-      "publish_mode": "git_branch"
-    },
     "THEPLUSPIPING.exe": {
-      "url": "https://github.com/skw4567/AppUpdates/releases/download/v2026.05.31.1110/THEPLUSPIPING.exe",
-      "hash": "3d12d9f63aea4cb38a57ca352bca767a4f74c36d82ef758d06a8753187e30990",
-      "size": 248449024,
-      "target_dir": "",
-      "publish_mode": "release_asset"
-    },
-    "Updater.exe": {
-      "url": "https://raw.githubusercontent.com/skw4567/AppUpdates/updates/release_update/Updater.exe",
-      "hash": "2a11531af4edcbcc02f250ec4b79d6887759b9c8047cab4fa7e35b48bbb05276",
-      "size": 26249216,
-      "target_dir": "",
-      "publish_mode": "git_branch"
-    },
-    "updater_style.qss": {
-      "url": "https://raw.githubusercontent.com/skw4567/AppUpdates/updates/release_update/updater_style.qss",
-      "hash": "9abfdc62da811f63bb24fa0d3b68a3c1f7623330a13cae1c10128248b65c9d58",
-      "size": 688,
-      "target_dir": "",
-      "publish_mode": "git_branch"
+      "url": "https://github.com/skw4567/AppUpdates/releases/download/v2026.06.14-rev2/THEPLUSPIPING.exe",
+      "hash": "680adf567e4dfbd1cc4049935c547acc4d48e1b8212f50126ba5a660a6c761d3",
+      "size": 265944064,
+      "target_dir": ""
     }
-  },
-  "schema_version": 2
+  }
 }
