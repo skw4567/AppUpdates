@@ -1,0 +1,16 @@
+{
+  "version": "2026.07.22.0919",
+  "tag": "v2026.07.22.0919",
+  "generated_at": "2026-07-22T00:19:12Z",
+  "source": "C:/Development/thePlusPiping_Master/dist/RevPublishApp",
+  "files": {
+    "THEPLUSPIPING.exe": {
+      "url": "https://github.com/skw4567/AppUpdates/releases/download/v2026.07.22.0919/THEPLUSPIPING.exe",
+      "hash": "764e2feba5c4cc88c20e853baf916595c709593bc2e8ea50557e03d916a4c186",
+      "size": 265305088,
+      "target_dir": "",
+      "publish_mode": "release_asset"
+    }
+  },
+  "schema_version": 2
+}
