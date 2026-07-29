@@ -1,13 +1,20 @@
 {
-  "version": "2026.07.29.1253",
-  "tag": "v2026.07.29.1253",
-  "generated_at": "2026-07-29T03:53:18Z",
+  "version": "2026.07.30.0849",
+  "tag": "v2026.07.30.0849",
+  "generated_at": "2026-07-29T23:49:38Z",
   "source": "C:/Development/thePlusPiping_Master/dist/RevPublishApp",
   "files": {
+    "ShareWizard.exe": {
+      "url": "https://github.com/skw4567/AppUpdates/releases/download/v2026.07.30.0849/ShareWizard.exe",
+      "hash": "5817acfbb30cf1e3d5d0ac79e4d921ee77d0c8946123ce4070e83687ccf9946a",
+      "size": 137871360,
+      "target_dir": "",
+      "publish_mode": "release_asset"
+    },
     "THEPLUSPIPING.exe": {
-      "url": "https://github.com/skw4567/AppUpdates/releases/download/v2026.07.29.1253/THEPLUSPIPING.exe",
-      "hash": "584825348f151828a16f6845629b74855491bda6f912d7653b1dca152fea9650",
-      "size": 377826816,
+      "url": "https://github.com/skw4567/AppUpdates/releases/download/v2026.07.30.0849/THEPLUSPIPING.exe",
+      "hash": "77807ad84a424dec6c546ade1126107764a85ad366627ab16e0e5ccaede21c02",
+      "size": 377957376,
       "target_dir": "",
       "publish_mode": "release_asset"
     },
@@ -15,6 +22,13 @@
       "url": "https://raw.githubusercontent.com/skw4567/AppUpdates/updates/dist/RevPublishApp/TPPDViewer.exe",
       "hash": "9412b1f978fd7aa1652cc226538aad356de13783492d53770c0e06ac230bd670",
       "size": 6547968,
+      "target_dir": "",
+      "publish_mode": "git_branch"
+    },
+    "Updater.exe": {
+      "url": "https://raw.githubusercontent.com/skw4567/AppUpdates/updates/dist/RevPublishApp/Updater.exe",
+      "hash": "dc3dc1e5f67dfd11e50890094e426e308bc9ee81614832900e3263a76d139e75",
+      "size": 26256384,
       "target_dir": "",
       "publish_mode": "git_branch"
     }
