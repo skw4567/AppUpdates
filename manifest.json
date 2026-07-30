@@ -1,20 +1,20 @@
 {
-  "version": "2026.07.30.1343",
-  "tag": "v2026.07.30.1343",
-  "generated_at": "2026-07-30T04:43:33Z",
+  "version": "2026.07.30.1616",
+  "tag": "v2026.07.30.1616",
+  "generated_at": "2026-07-30T07:16:11Z",
   "source": "C:/Development/Publisher/AppUpdates/app_files",
   "files": {
     "ShareWizard.exe": {
-      "url": "https://github.com/skw4567/AppUpdates/releases/download/v2026.07.30.1343/ShareWizard.exe",
+      "url": "https://github.com/skw4567/AppUpdates/releases/download/v2026.07.30.1616/ShareWizard.exe",
       "hash": "5817acfbb30cf1e3d5d0ac79e4d921ee77d0c8946123ce4070e83687ccf9946a",
       "size": 137871360,
       "target_dir": "",
       "publish_mode": "release_asset"
     },
     "THEPLUSPIPING.exe": {
-      "url": "https://github.com/skw4567/AppUpdates/releases/download/v2026.07.30.1343/THEPLUSPIPING.exe",
-      "hash": "551c6b7e9bea08fce15f52e637b77f8805cae56c1499c3021055b21e5f5cb0a1",
-      "size": 377961984,
+      "url": "https://github.com/skw4567/AppUpdates/releases/download/v2026.07.30.1616/THEPLUSPIPING.exe",
+      "hash": "0b17d6ca08abc5861ea7479280ba714071ac9935549a2f18d15af500ee8bdf3b",
+      "size": 377968640,
       "target_dir": "",
       "publish_mode": "release_asset"
     },
@@ -27,8 +27,8 @@
     },
     "Updater.exe": {
       "url": "https://raw.githubusercontent.com/skw4567/AppUpdates/updates/app_files/Updater.exe",
-      "hash": "5c114fd4b55d36a5016465db11497576bb7addb6ede7fac214578b5b0160cb2b",
-      "size": 26268672,
+      "hash": "9519af8314ffe0bc46b10f35a02810868b6f5ae03f9c602cc87d2b710a1fcadb",
+      "size": 26269696,
       "target_dir": "",
       "publish_mode": "git_branch"
     }
