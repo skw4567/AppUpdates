@@ -1,4 +1,4 @@
-# 🏗️ the PLUS Piping (플랜트 배관 용접 관리 시스템)
+# the PLUS Piping (플랜트 배관 용접 관리 시스템)
 
 **the PLUS Piping**은 플랜트 건설 현장의 배관 도면 분석 및 용접 조인트 데이터를 체계적으로 관리하기 위한 통합 데스크탑 솔루션입니다.
 
@@ -7,7 +7,6 @@
 ## 🚀 주요 기능 (Key Features)
 
 * **도면 분석 및 데이터 통합**: 도면 내 용접 포인트(Joint) 자동 추출 및 매칭.
-* **다중 DB 지원**: 사용자 환경에 따른 하이브리드 데이터베이스 지원 (SQLite / PostgreSQL).
 * **Zero-Config 네트워크**: UDP Beacon 기술을 이용한 작업자 PC-서버 PC 자동 연결.
 * **지능형 업데이트**: GitHub API를 활용한 실시간 증분 업데이트 시스템.
 * **커스텀 리포트**: `.tppr` 포맷을 활용한 동적 리포트 생성 및 데이터 그룹화.
@@ -41,7 +40,3 @@
 * Windows 10/11 (64-bit)
 * PostgreSQL 15+ (서버 모드 사용 시)
 
-### 2. 빌드 방법
-```bash
-# Nuitka를 이용한 독립 실행파일 빌드
-nuitka --standalone --onefile --plugin-enable=pyside6 --windows-console-mode=hide main.py
